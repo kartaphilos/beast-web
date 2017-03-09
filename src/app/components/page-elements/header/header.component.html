@@ -1,0 +1,13 @@
+<md-toolbar color="primary">
+  <md-icon>account_circle</md-icon>  <!-- TODO: Make click for login -->
+  {{title}} Beast Treatment!
+  <button md-icon-button [md-menu-trigger-for]="menu">
+      <md-icon>more_vert</md-icon>
+    </button>
+</md-toolbar>
+
+<md-menu x-position="before" #menu="mdMenu">
+  <button md-menu-item>Settings</button>
+  <button md-menu-item>Blah</button>
+  <button md-menu-item>About</button>
+</md-menu>

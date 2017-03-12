@@ -46,10 +46,11 @@ export class AnimalDetailComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log('id: ', this.route.params['id']);
+    //console.log('id: ', this.route.params['id']);
     this.route.params
       .switchMap((params: Params) => this.animalService.getAnimal(params['id']))
       .subscribe(animal => this.animal = animal);
+    console.log('animal: ', JSON.stringify(this.animal));  
   }
 
 

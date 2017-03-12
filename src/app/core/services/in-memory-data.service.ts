@@ -25,7 +25,7 @@ export class InMemoryDataService implements InMemoryDbService {
           "estimated": "true",
           "date": "2006-02-18T13:43:09.707Z"
         },
-        "_id": "0d825cac-5756-4388-a243-542e1db78216",
+        "id": "0d825cac-5756-4388-a243-542e1db78216",
         "breed": "nag",
         "colour": "chestnut",
         "size": "16.1h",
@@ -42,7 +42,7 @@ export class InMemoryDataService implements InMemoryDbService {
           "estimated": "true",
           "date": "2013-02-21T17:12:10.380Z"
         },
-        "_id": "0ffe8d77-d292-4a21-8ca9-2895ee81f774",
+        "id": "0ffe8d77-d292-4a21-8ca9-2895ee81f774",
         "species": "horse",
         "breed": "test",
         "colour": "grey",
@@ -60,7 +60,7 @@ export class InMemoryDataService implements InMemoryDbService {
           "estimated": "true",
           "date": "2013-02-21T17:12:10.380Z"
         },
-        "_id": "0ffe8d77-d292-4a21-8ca9-2895ee81f774",
+        "id": "0ffe8d77-d292-4a21-8ca9-2895ee81f774",
         "species": "horse",
         "breed": "test",
         "colour": "grey",

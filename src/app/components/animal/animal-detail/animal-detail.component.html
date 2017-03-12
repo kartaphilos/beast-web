@@ -9,14 +9,14 @@
       <td>
         <!-- Species (Disabled as locked to horse at the mo) -->
         <md-input-container>
-          <input mdInput placeholder="Species" disabled value="horse">
+          <input mdInput placeholder="Species" disabled value="Horse (Equus Caballus)">
         </md-input-container>
       </td>
       <td>
         <!-- Breed -->
         <md-select placeholder="Breed" [(ngModel)]="selectedValue" name="breed">
           <md-option *ngFor="let breed of breeds" [value]="breed.value">
-            {{breed.viewValue}}
+            {{breed.value}}
           </md-option>
         </md-select>
       </td>
@@ -24,7 +24,7 @@
         <!-- Gender -->
         <md-select placeholder="Gender" [(ngModel)]="selectedValue" name="gender">
           <md-option *ngFor="let gender of genders" [value]="gender.value">
-            {{gender.viewValue}}
+            {{gender.value}}
           </md-option>
         </md-select>
       </td>
@@ -61,7 +61,7 @@
         <!-- Colour -->
         <md-select placeholder="Colour" [(ngModel)]="selectedValue" name="colour">
           <md-option *ngFor="let colour of colours" [value]="colour.value">
-            {{colour.icon}} {{colour.viewValue}}
+            {{colour.icon}} {{colour.value}}
           </md-option>
         </md-select>
       </td>

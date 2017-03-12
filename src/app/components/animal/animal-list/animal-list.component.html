@@ -1,3 +1,13 @@
-<p>
-  animal-list works!
-</p>
+<p>animal-list works!</p>
+<md-list dense class="animals">
+  <md-list-item *ngFor="let animal of animals" [class.selected]="animal === selectedAnimal" (click)="gotoDetail(animal)">
+    <md-icon md-list-avatar>pets</md-icon>
+    <h3 md-line> {{animal.name.full}} </h3>
+    <p md-line>Type: {{animal.species}} Breed: {{animal.breed}} ID: {{animal.id}}</p>
+    <p md-line>Colour: {{animal.colour}} </p>
+  </md-list-item>
+  <!-- <span class="add" (click)="create()"  ><button md-mini-fab><md-icon>add circle</md-icon></button></span>
+  -->
+</md-list>
+
+<button md-raised-button routerLink="/animal/detail">Detail</button>

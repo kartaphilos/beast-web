@@ -6,22 +6,19 @@ import { AnimalDetailComponent } from './components/animal/animal-detail/animal-
 import { LocationListComponent, LocationDetailComponent } from './components/location';
 
 const routes: Routes = [
-//  { path: '', redirectTo: 'animal', pathMatch: 'full' },
-  { path: 'animal', component: AnimalListComponent,
-    children: [
-      { path: 'detail/:id', component: AnimalDetailComponent },
-      ]
-  },
+  //  { path: '', redirectTo: 'animal', pathMatch: 'full' },
+  { path: 'animal', component: AnimalListComponent },
+  { path: 'animal/detail/:id', component: AnimalDetailComponent },
   { path: 'location', component: LocationListComponent,
-    children: [
+    children: [ //Don't make a child route if to render is same outlet as parent
       { path: 'detail/:id', component: LocationDetailComponent }
     ]
   }
 ];
 
 @NgModule({
-  imports: [ RouterModule.forRoot(routes) ],
-  exports: [ RouterModule ],
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
   providers: []
 })
 export class AppRoutingModule { }

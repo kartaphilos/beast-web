@@ -4,6 +4,14 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
+// Imports for loading & configuring the in-memory web api
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService }  from './core/services';
+
+// Imports for app services
+import { AnimalService } from './core/services';
+
+// Import teh components
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AnimalListComponent } from './components/animal/animal-list/animal-list.component';
@@ -27,12 +35,13 @@ import { NavBarComponent } from './components/page-elements/nav-bar/nav-bar.comp
   ],
   imports: [
     MaterialModule.forRoot(),
+    InMemoryWebApiModule.forRoot(InMemoryDataService),
     BrowserModule,
     FormsModule,
     HttpModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [ AnimalService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

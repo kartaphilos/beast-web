@@ -1,3 +1,108 @@
 <p>
   animal-detail works!
 </p>
+
+<!-- Basic form  -->
+<form class="animal-detail-form">
+  <table class="full-width" cellspacing="0">
+    <tr>
+      <td>
+        <!-- Species (Disabled as locked to horse at the mo) -->
+        <md-input-container>
+          <input mdInput placeholder="Species" disabled value="horse">
+        </md-input-container>
+      </td>
+      <td>
+        <!-- Breed -->
+        <md-select placeholder="Breed" [(ngModel)]="selectedValue" name="breed">
+          <md-option *ngFor="let breed of breeds" [value]="breed.value">
+            {{breed.viewValue}}
+          </md-option>
+        </md-select>
+      </td>
+      <td>
+        <!-- Gender -->
+        <md-select placeholder="Gender" [(ngModel)]="selectedValue" name="gender">
+          <md-option *ngFor="let gender of genders" [value]="gender.value">
+            {{gender.viewValue}}
+          </md-option>
+        </md-select>
+      </td>
+    </tr>
+    <!-- New Form Row -->
+    <tr>
+      <!-- Names -->
+      <td>
+        <md-input-container class="full-width">
+          <input mdInput placeholder="Display name">
+        </md-input-container>
+      </td>
+      <td>
+        <md-input-container class="full-width">
+          <input mdInput placeholder="Full Name">
+        </md-input-container>
+      </td>
+    </tr>
+    <!-- New Form Row -->
+    <tr>
+      <td>
+        <!-- Age -->
+        <!-- Need to be a popup... date picker or age dialog -->
+      </td>
+      <td>
+        <!-- Size -->
+        <md-select placeholder="Size" [(ngModel)]="selectedValue" name="size">
+          <md-option *ngFor="let size of sizes" [value]="size.value">
+            {{size.viewValue}}
+          </md-option>
+        </md-select>
+      </td>
+      <td>
+        <!-- Colour -->
+        <md-select placeholder="Colour" [(ngModel)]="selectedValue" name="colour">
+          <md-option *ngFor="let colour of colours" [value]="colour.value">
+            {{colour.icon}} {{colour.viewValue}}
+          </md-option>
+        </md-select>
+      </td>
+      <td>
+        <!-- Activity -->
+        <md-select placeholder="Activity" [(ngModel)]="selectedValue" name="activity">
+          <md-option *ngFor="let activity of activities" [value]="activity.value">
+            {{activity.viewValue}}
+          </md-option>
+        </md-select>
+    </tr>
+  </table>
+
+  <!-- Address -->
+  <p>
+    <md-input-container class="full-width">
+      <textarea mdInput placeholder="Address">Street</textarea>
+    </md-input-container>
+    <md-input-container class="full-width">
+      <textarea mdInput placeholder="Address 2">Willage/Town/City</textarea>
+    </md-input-container>
+  </p>
+  <table class="full-width" cellspacing="0">
+    <tr>
+      <td>
+        <md-input-container class="full-width">
+          <input mdInput placeholder="City">
+        </md-input-container>
+      </td>
+      <td>
+        <md-input-container class="full-width">
+          <input mdInput placeholder="Country">
+        </md-input-container>
+      </td>
+      <td>
+        <md-input-container class="full-width">
+          <input mdInput #postalCode maxlength="7" placeholder="Post Code">
+          <md-hint align="end">{{postalCode.value.length}} / 7</md-hint>
+        </md-input-container>
+      </td>
+    </tr>
+  </table>
+
+</form>

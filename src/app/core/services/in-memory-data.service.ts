@@ -3,25 +3,24 @@ import { InMemoryDbService }	from 'angular-in-memory-web-api';
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {  //ToDo - Can I return multiple doc types?  or do I need an InMem service for each doc type?
     let animal = [  // <- This variable is the url -> /api/animal
-      //TODO: read json from a file
-    {
-      "patient_since": "2016-01-01T17:12:10.381Z",
-      "name": {
-        "full": "Stampy",
-        "display": "Stampy of Hoof"
+      {
+        "patient_since": "2016-01-01T17:12:10.381Z",
+        "name": {
+          "full": "Stampy",
+          "display": "Stampy of Hoof"
+        },
+        "birth": {
+          "estimated": "true",
+          "date": "2010-01-01T17:12:10.380Z"
+        },
+        "id": "0cce5d55-d292-4a21-8ca9-2895ee81f774",
+        "species": "horse",
+        "breed": "Shire",
+        "colour": "grey",
+        "size": "15.1h",
+        "activity": "winning",
+        "gender": "Stallion"
       },
-      "birth": {
-        "estimated": "true",
-        "date": "2010-01-01T17:12:10.380Z"
-      },
-      "id": "0cce5d55-d292-4a21-8ca9-2895ee81f774",
-      "species": "horse",
-      "breed": "Shire",
-      "colour": "grey",
-      "size": "15.1h",
-      "activity": "winning",
-      "gender": "Stallion"
-    },
       {
         "name": {
           "full": "Canty1 Canterer",
@@ -75,6 +74,41 @@ export class InMemoryDataService implements InMemoryDbService {
         "gender": "Mare"
       }
     ];
-    return { animal };
+
+    let breeds = [
+          { value: 'Luisitano' },
+          { value: 'nag' },
+          { value: 'Arab' },
+          { value: 'Cob' },
+          { value: 'Shire' },
+          { value: 'Thoroughbred' },
+          { value: 'Andalusian' },
+          { value: 'Trakehner' },
+          { value: 'Dutch Warmblood' },
+          { value: 'Glue Factory' },
+        ];
+
+    let constants = [
+        {
+        genders: [
+          { value: 'Mare' },
+          { value: 'Gelding' },
+          { value: 'Stallion' },
+        ]
+      },
+      {
+        colours: [
+          { value: 'Bay' },
+          { value: 'Chestnut' },
+          { value: 'Dun' },
+          { value: 'Grey' },
+          { value: 'Palomino' },
+          { value: 'Black' },
+          { value: 'White' },
+        ]
+      }
+    ];
+
+    return { animal, breeds, constants };
   }
 }

@@ -23,6 +23,7 @@ export class AnimalService {
 
 	getAnimal(id: number): Promise<Animal> {
 		const url = `${this.animalsUrl}/${id}`;
+		console.log('animal url: ', url);
 		return this.http.get(url)
 			.toPromise()
 			.then(response => response.json().data as Animal)

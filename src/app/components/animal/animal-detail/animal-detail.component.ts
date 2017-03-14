@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 import 'rxjs/add/operator/switchMap';
 
@@ -13,9 +14,11 @@ import { AnimalService } from './../../../core/services';
 })
 export class AnimalDetailComponent implements OnInit {
   animal: Animal;
+//  selectedBreed = this.animal.breed;
 
   breeds = [ //TODO: Put these in DB
     { value: 'Luisitano' },
+    { value: 'nag' },
     { value: 'Arab' },
     { value: 'Cob' },
     { value: 'Shire' },
@@ -50,8 +53,8 @@ export class AnimalDetailComponent implements OnInit {
     this.route.params
       .switchMap((params: Params) => this.animalService.getAnimal(params['id']))
       .subscribe(animal => this.animal = animal);
-    console.log('animal: ', JSON.stringify(this.animal));  
-  }
+
+    }
 
 
 }

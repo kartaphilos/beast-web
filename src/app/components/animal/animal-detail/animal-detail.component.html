@@ -10,29 +10,26 @@
         <td>
           <!-- Species (Disabled as locked to horse at the mo) -->
           <md-input-container>
-            <input mdInput placeholder="Species" disabled ([ngModel])="animal.species">
+            <input mdInput placeholder="Species" disable [(ngModel)]="animal.species" name="species">
           </md-input-container>
         </td>
         <td>
-          <!-- Breed -->
-          <md-select placeholder="Breed" [(ngModel)]="selectedValue" name="breed">
+          <md-select placeholder="Breed" [(ngModel)]="animal.breed" name="breed">
             <md-option *ngFor="let breed of breeds" [value]="breed.value">
               {{breed.value}}
             </md-option>
           </md-select>
         </td>
         <td>
-          <!-- Gender -->
-          <md-select placeholder="Gender" [(ngModel)]="selectedValue" name="gender">
+          <md-select placeholder="Gender" [(ngModel)]="animal.gender" name="gender">
             <md-option *ngFor="let gender of genders" [value]="gender.value">
               {{gender.value}}
             </md-option>
           </md-select>
         </td>
       </tr>
-      <!-- New Form Row -->
+<!--
       <tr>
-        <!-- Names -->
         <td>
           <md-input-container class="full-width">
             <input mdInput placeholder="Display name">
@@ -44,31 +41,25 @@
           </md-input-container>
         </td>
       </tr>
-      <!-- New Form Row -->
       <tr>
         <td>
-          <!-- Age -->
-          <!-- Need to be a popup... date picker or age dialog -->
         </td>
         <td>
-          <!-- Size -->
-          <md-select placeholder="Size" [(ngModel)]="selectedValue" name="size">
+            <md-select placeholder="Size" [(ngModel)]="selectedValue" name="size">
             <md-option *ngFor="let size of sizes" [value]="size.value">
               {{size.viewValue}}
             </md-option>
           </md-select>
         </td>
         <td>
-          <!-- Colour -->
-          <md-select placeholder="Colour" [(ngModel)]="selectedValue" name="colour">
+            <md-select placeholder="Colour" [(ngModel)]="selectedValue" name="colour">
             <md-option *ngFor="let colour of colours" [value]="colour.value">
               {{colour.icon}} {{colour.value}}
             </md-option>
           </md-select>
         </td>
         <td>
-          <!-- Activity -->
-          <md-select placeholder="Activity" [(ngModel)]="selectedValue" name="activity">
+            <md-select placeholder="Activity" [(ngModel)]="selectedValue" name="activity">
             <md-option *ngFor="let activity of activities" [value]="activity.value">
               {{activity.viewValue}}
             </md-option>
@@ -76,8 +67,7 @@
       </tr>
     </table>
 
-    <!-- Address -->
-    <p>
+  <p>
       <md-input-container class="full-width">
         <textarea mdInput placeholder="Address">Street</textarea>
       </md-input-container>
@@ -104,6 +94,7 @@
           </md-input-container>
         </td>
       </tr>
+-->
     </table>
 
   </form>

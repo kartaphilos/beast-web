@@ -22,6 +22,7 @@ export class InMemoryDataService implements InMemoryDbService {
         "gender": "Stallion"
       },
       {
+"patient_since": "2013-01-01T00:00:00.000Z",
         "name": {
           "full": "Canty1 Canterer",
           "display": "Canty1"

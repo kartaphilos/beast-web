@@ -10,7 +10,7 @@
         <td>
           <!-- Species (Disabled as locked to horse at the mo) -->
           <md-input-container>
-            <input mdInput placeholder="Species" disable [(ngModel)]="animal.species" name="species">
+            <input mdInput placeholder="Species" disabled [(ngModel)]="animal.species" name="species">
           </md-input-container>
         </td>
         <td>
@@ -28,45 +28,57 @@
           </md-select>
         </td>
       </tr>
-<!--
       <tr>
         <td>
           <md-input-container class="full-width">
-            <input mdInput placeholder="Display name">
+            <input mdInput placeholder="Display name" [(ngModel)]="animal.name.display" name="display" >
           </md-input-container>
         </td>
         <td>
           <md-input-container class="full-width">
-            <input mdInput placeholder="Full Name">
+            <input mdInput placeholder="Full Name" [(ngModel)]="animal.name.full" name="full">
           </md-input-container>
         </td>
       </tr>
       <tr>
         <td>
+            <md-input-container>
+              <input mdInput placeholder="Size" [(ngModel)]="animal.size" name="size" >
+          </md-input-container>
         </td>
+
         <td>
-            <md-select placeholder="Size" [(ngModel)]="selectedValue" name="size">
-            <md-option *ngFor="let size of sizes" [value]="size.value">
-              {{size.viewValue}}
-            </md-option>
-          </md-select>
-        </td>
-        <td>
-            <md-select placeholder="Colour" [(ngModel)]="selectedValue" name="colour">
-            <md-option *ngFor="let colour of colours" [value]="colour.value">
+            <md-select placeholder="Colour" [(ngModel)]="animal.colour" name="colour">
+            <md-option *ngFor="let colour of constColours" [value]="colour.value">
               {{colour.icon}} {{colour.value}}
             </md-option>
           </md-select>
         </td>
         <td>
-            <md-select placeholder="Activity" [(ngModel)]="selectedValue" name="activity">
-            <md-option *ngFor="let activity of activities" [value]="activity.value">
-              {{activity.viewValue}}
+            <md-select placeholder="Activity" [(ngModel)]="animal.activity" name="activity">
+            <md-option *ngFor="let activity of constActivities" [value]="activity.value">
+              {{activity.value}}
             </md-option>
           </md-select>
       </tr>
+      <tr>
+        <td>
+            <md-input-container>
+              <input mdInput placeholder="ID" disabled [(ngModel)]="animal.id" name="id" >
+          </md-input-container>
+        </td>
+      </tr>
+      <tr>
+        <td>
+            <md-input-container>
+              <input mdInput placeholder="Patient Since" disabled [(ngModel)]="animal.patient_since" name="patient_since" >
+          </md-input-container>
+        </td>
+      </tr>
+
     </table>
 
+<!--
   <p>
       <md-input-container class="full-width">
         <textarea mdInput placeholder="Address">Street</textarea>
@@ -94,8 +106,8 @@
           </md-input-container>
         </td>
       </tr>
--->
     </table>
+-->
 
   </form>
 </div>

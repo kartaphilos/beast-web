@@ -1,9 +1,4 @@
-<p>
-  animal-detail works!
-</p>
 <div *ngIf="animal">
-  ID: {{animal.id}} Gender: {{animal.gender}} Breed: {{animal.breed}}
-  <!-- Basic form  -->
   <form class="animal-detail-form">
     <table class="full-width" cellspacing="0">
       <tr>
@@ -31,7 +26,7 @@
       <tr>
         <td>
           <md-input-container class="full-width">
-            <input mdInput placeholder="Display name" [(ngModel)]="animal.name.display" name="display" >
+            <input mdInput placeholder="Display name" [(ngModel)]="animal.name.display" name="display">
           </md-input-container>
         </td>
         <td>
@@ -42,20 +37,20 @@
       </tr>
       <tr>
         <td>
-            <md-input-container>
-              <input mdInput placeholder="Size" [(ngModel)]="animal.size" name="size" >
+          <md-input-container>
+            <input mdInput placeholder="Size" [(ngModel)]="animal.size" name="size">
           </md-input-container>
         </td>
 
         <td>
-            <md-select placeholder="Colour" [(ngModel)]="animal.colour" name="colour">
+          <md-select placeholder="Colour" [(ngModel)]="animal.colour" name="colour">
             <md-option *ngFor="let colour of constColours" [value]="colour.value">
               {{colour.icon}} {{colour.value}}
             </md-option>
           </md-select>
         </td>
         <td>
-            <md-select placeholder="Activity" [(ngModel)]="animal.activity" name="activity">
+          <md-select placeholder="Activity" [(ngModel)]="animal.activity" name="activity">
             <md-option *ngFor="let activity of constActivities" [value]="activity.value">
               {{activity.value}}
             </md-option>
@@ -63,22 +58,22 @@
       </tr>
       <tr>
         <td>
-            <md-input-container>
-              <input mdInput placeholder="ID" disabled [(ngModel)]="animal.id" name="id" >
+          <md-input-container>
+            <input mdInput placeholder="ID" disabled [(ngModel)]="animal.id" name="id">
           </md-input-container>
         </td>
       </tr>
       <tr>
         <td>
-            <md-input-container>
-              <input mdInput placeholder="Patient Since" disabled [(ngModel)]="animal.patient_since" name="patient_since" >
+          <md-input-container>
+            <input mdInput placeholder="Patient Since" disabled [(ngModel)]="animal.patient_since" name="patient_since">
           </md-input-container>
         </td>
       </tr>
 
     </table>
 
-<!--
+    <!--
   <p>
       <md-input-container class="full-width">
         <textarea mdInput placeholder="Address">Street</textarea>

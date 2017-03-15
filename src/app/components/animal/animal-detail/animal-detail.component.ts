@@ -4,8 +4,8 @@ import { FormsModule } from '@angular/forms';
 
 import 'rxjs/add/operator/switchMap';
 
-import { Animal } from './../../../core/models';
-import { Constants } from './../../../core/models';
+import { Animal, Constants } from './../../../core/models';
+//import { Constants } from './../../../core/models';
 import { AnimalService } from './../../../core/services';
 import { ConstantsService } from './../../../core/services';
 
@@ -20,6 +20,7 @@ export class AnimalDetailComponent implements OnInit {
   constBreeds: [{}];
   constGenders: [{}];
   constColours: [{}];
+  constActivities: [{}];
   constants: Constants[];
 
   constructor(
@@ -37,8 +38,6 @@ export class AnimalDetailComponent implements OnInit {
         console.log('animal: ', this.animal);
         console.log('animal gender: ', this.animal.gender);
       });
-
-
   }
 
   getConstants() {
@@ -48,6 +47,7 @@ export class AnimalDetailComponent implements OnInit {
         this.constBreeds = this.constants[0].breeds;
         this.constGenders = this.constants[0].genders;
         this.constColours = this.constants[0].colours;
+        this.constActivities = this.constants[0].activities;
         console.log('constants: ', this.constants);
       })
 

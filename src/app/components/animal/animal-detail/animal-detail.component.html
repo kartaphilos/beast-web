@@ -70,6 +70,16 @@
           </md-input-container>
         </td>
       </tr>
+      <tr>
+        <td>
+          <md-input-container>
+            <input mdInput placeholder="Birth Date" disabled [(ngModel)]="animal.birth.date" name="birth.date">
+          </md-input-container>
+        </td>
+        <td>
+          <md-checkbox [(ngModel)]="animal.birth.estimated" name="birth.estimated">Estimated Date</md-checkbox>
+        </td>
+      </tr>
 
     </table>
 

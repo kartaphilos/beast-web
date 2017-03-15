@@ -1,4 +1,3 @@
-<p>animal-list works!</p>
 <md-list dense class="animals">
   <md-list-item *ngFor="let animal of animals" [class.selected]="animal === selectedAnimal" (click)="gotoDetail(animal)">
     <md-icon md-list-avatar>pets</md-icon>

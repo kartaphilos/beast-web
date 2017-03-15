@@ -6,8 +6,8 @@ export class InMemoryDataService implements InMemoryDbService {
       {
         "patient_since": "2016-01-01T17:12:10.381Z",
         "name": {
-          "full": "Stampy",
-          "display": "Stampy of Hoof"
+          "full": "Stampy of Hoofy",
+          "display": "Stampy"
         },
         "birth": {
           "estimated": "true",
@@ -16,9 +16,9 @@ export class InMemoryDataService implements InMemoryDbService {
         "id": "0cce5d55-d292-4a21-8ca9-2895ee81f774",
         "species": "horse",
         "breed": "Shire",
-        "colour": "grey",
+        "colour": "White",
         "size": "15.1h",
-        "activity": "winning",
+        "activity": "Eventing",
         "gender": "Stallion"
       },
       {
@@ -31,17 +31,17 @@ export class InMemoryDataService implements InMemoryDbService {
           "date": "2006-02-18T13:43:09.707Z"
         },
         "id": "0d825cac-5756-4388-a243-542e1db78216",
-        "breed": "nag",
-        "colour": "chestnut",
+        "breed": "Nag",
+        "colour": "Chestnut",
         "size": "16.1h",
-        "activity": "eating",
-        "gender": "mare"
+        "activity": "Eating",
+        "gender": "Mare"
       },
       {
         "patient_since": "2017-02-21T17:12:10.381Z",
         "name": {
-          "full": "yappy",
-          "display": "yappy for search test"
+          "display": "yappy",
+          "full": "yappy for search test"
         },
         "birth": {
           "estimated": "true",
@@ -50,16 +50,16 @@ export class InMemoryDataService implements InMemoryDbService {
         "id": "0ffe8d77-d292-4a21-8ca9-2895ee81f774",
         "species": "horse",
         "breed": "Arab",
-        "colour": "grey",
-        "size": "15.1h",
-        "activity": "winning",
-        "gender": "gelding"
+        "colour": "Palomino",
+        "size": "15.2h",
+        "activity": "Hacking",
+        "gender": "Gelding"
       },
       {
         "patient_since": "2015-02-21T17:12:10.381Z",
         "name": {
-          "full": "Neigh",
-          "display": "Neigh Neigh"
+          "full": "Neigh Neigh Munch",
+          "display": "Neigh"
         },
         "birth": {
           "estimated": "true",
@@ -68,9 +68,9 @@ export class InMemoryDataService implements InMemoryDbService {
         "id": "0bbe8d88-d292-4a21-8ca9-2895ee81f774",
         "species": "horse",
         "breed": "Cob",
-        "colour": "grey",
+        "colour": "Grey",
         "size": "15.1h",
-        "activity": "winning",
+        "activity": "Eating",
         "gender": "Mare"
       }
     ];
@@ -102,6 +102,14 @@ export class InMemoryDataService implements InMemoryDbService {
           { 'value': 'Palomino' },
           { 'value': 'Black' },
           { 'value': 'White' },
+        ],
+        'activities': [
+          { 'value': 'Jumping'},
+          { 'value': 'Hacking'},
+          { 'value': 'Dressage'},
+          { 'value': 'Eventing'},
+          { 'value': 'Eating'},
+          { 'value': 'Glue Making'},
         ]
       }
     ];

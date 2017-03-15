@@ -66,14 +66,14 @@
       <tr>
         <td>
           <md-input-container>
-            <input mdInput placeholder="Patient Since" disabled [(ngModel)]="animal.patient_since" name="patient_since">
+            <input mdInput placeholder="Patient Since" type="date" disabled [ngModel]="animal.patient_since | date:'yyyy-MM-dd'" name="patient_since">
           </md-input-container>
         </td>
       </tr>
       <tr>
         <td>
           <md-input-container>
-            <input mdInput placeholder="Birth Date" disabled [(ngModel)]="animal.birth.date" name="birth.date">
+            <input mdInput placeholder="Birth Date" type="date" [ngModel]="animal.birth.date | date:'yyyy-MM-dd'" name="birth.date">
           </md-input-container>
         </td>
         <td>

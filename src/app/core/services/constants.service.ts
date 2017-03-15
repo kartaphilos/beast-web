@@ -27,7 +27,7 @@ export class ConstantsService {
       .catch(this.handleError);
   }
 
-  getConstants(): Observable<Constants> {
+  getConstants(): Observable<Constants[]> {
     const url = this.constantsUrl;
     console.log('Constants url: ', url);
     return this.http.get(url)

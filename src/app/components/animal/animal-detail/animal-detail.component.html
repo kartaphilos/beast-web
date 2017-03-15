@@ -15,14 +15,14 @@
         </td>
         <td>
           <md-select placeholder="Breed" [(ngModel)]="animal.breed" name="breed">
-            <md-option *ngFor="let breed of breeds" [value]="breed.value">
+            <md-option *ngFor="let breed of constBreeds" [value]="breed.value">
               {{breed.value}}
             </md-option>
           </md-select>
         </td>
         <td>
           <md-select placeholder="Gender" [(ngModel)]="animal.gender" name="gender">
-            <md-option *ngFor="let gender of genders" [value]="gender.value">
+            <md-option *ngFor="let gender of constGenders" [value]="gender.value">
               {{gender.value}}
             </md-option>
           </md-select>

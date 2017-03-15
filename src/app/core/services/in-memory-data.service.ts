@@ -75,40 +75,37 @@ export class InMemoryDataService implements InMemoryDbService {
       }
     ];
 
-    let breeds = [
-          { value: 'Luisitano' },
-          { value: 'nag' },
-          { value: 'Arab' },
-          { value: 'Cob' },
-          { value: 'Shire' },
-          { value: 'Thoroughbred' },
-          { value: 'Andalusian' },
-          { value: 'Trakehner' },
-          { value: 'Dutch Warmblood' },
-          { value: 'Glue Factory' },
-        ];
-
     let constants = [
-        {
-        genders: [
-          { value: 'Mare' },
-          { value: 'Gelding' },
-          { value: 'Stallion' },
-        ]
-      },
       {
-        colours: [
-          { value: 'Bay' },
-          { value: 'Chestnut' },
-          { value: 'Dun' },
-          { value: 'Grey' },
-          { value: 'Palomino' },
-          { value: 'Black' },
-          { value: 'White' },
+        'breeds': [
+          { 'value': 'Luisitano' },
+          { 'value': 'nag' },
+          { 'value': 'Arab' },
+          { 'value': 'Cob' },
+          { 'value': 'Shire' },
+          { 'value': 'Thoroughbred' },
+          { 'value': 'Andalusian' },
+          { 'value': 'Trakehner' },
+          { 'value': 'Dutch Warmblood' },
+          { 'value': 'Glue Factory' },
+        ],
+        'genders': [
+          { 'value': 'Mare' },
+          { 'value': 'Gelding' },
+          { 'value': 'Stallion' },
+        ],
+        'colours': [
+          { 'value': 'Bay' },
+          { 'value': 'Chestnut' },
+          { 'value': 'Dun' },
+          { 'value': 'Grey' },
+          { 'value': 'Palomino' },
+          { 'value': 'Black' },
+          { 'value': 'White' },
         ]
       }
     ];
 
-    return { animal, breeds, constants };
+    return { animal, constants };
   }
 }

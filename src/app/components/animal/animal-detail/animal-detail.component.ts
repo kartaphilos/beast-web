@@ -5,7 +5,10 @@ import { FormsModule } from '@angular/forms';
 import 'rxjs/add/operator/switchMap';
 
 import { Animal } from './../../../core/models';
+import { Constants } from './../../../core/models';
 import { AnimalService } from './../../../core/services';
+import { ConstantsService } from './../../../core/services';
+
 
 @Component({
   selector: 'app-animal-detail',
@@ -14,47 +17,40 @@ import { AnimalService } from './../../../core/services';
 })
 export class AnimalDetailComponent implements OnInit {
   animal: Animal;
-//  selectedBreed = this.animal.breed;
-
-  breeds = [ //TODO: Put these in DB
-    { value: 'Luisitano' },
-    { value: 'nag' },
-    { value: 'Arab' },
-    { value: 'Cob' },
-    { value: 'Shire' },
-    { value: 'Thoroughbred' },
-    { value: 'Andalusian' },
-    { value: 'Trakehner' },
-    { value: 'Dutch Warmblood' },
-    { value: 'Glue Factory' },
-  ];
-  genders = [
-    { value: 'Mare' },
-    { value: 'Gelding' },
-    { value: 'Stallion' },
-  ];
-  colours = [
-    { value: 'Bay' },
-    { value: 'Chestnut' },
-    { value: 'Dun' },
-    { value: 'Grey' },
-    { value: 'Palomino' },
-    { value: 'Black' },
-    { value: 'White' },
-  ];
+  constBreeds: [{}];
+  constGenders: [{}];
+  constColours: [{}];
+  constants: Constants[];
 
   constructor(
     private route: ActivatedRoute,
-    private animalService: AnimalService
+    private animalService: AnimalService,
+    private constantsService: ConstantsService
   ) { }
 
   ngOnInit(): void {
-    //console.log('id: ', this.route.params['id']);
+    this.getConstants();
     this.route.params
       .switchMap((params: Params) => this.animalService.getAnimal(params['id']))
-      .subscribe(animal => this.animal = animal);
+      .subscribe(animal => {
+        this.animal = animal;
+        console.log('animal: ', this.animal);
+        console.log('animal gender: ', this.animal.gender);
+      });
 
-    }
 
+  }
+
+  getConstants() {
+    this.constantsService.getConstants()
+      .subscribe(consts => {
+        this.constants = consts;
+        this.constBreeds = this.constants[0].breeds;
+        this.constGenders = this.constants[0].genders;
+        this.constColours = this.constants[0].colours;
+        console.log('constants: ', this.constants);
+      })
+
+  }
 
 }

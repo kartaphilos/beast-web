@@ -22,6 +22,8 @@ export class AnimalDetailComponent implements OnInit {
   constColours: [{}];
   constActivities: [{}];
   constants: Constants[];
+  private isReadOnly:boolean=true;
+  private hideForm:boolean=false;
 
   constructor(
     private route: ActivatedRoute,
@@ -31,6 +33,10 @@ export class AnimalDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.getConstants();
+    this.getAnimal();
+  }
+
+  getAnimal() {
     this.route.params
       .switchMap((params: Params) => this.animalService.getAnimal(params['id']))
       .subscribe(animal => {
@@ -49,8 +55,15 @@ export class AnimalDetailComponent implements OnInit {
         this.constColours = this.constants[0].colours;
         this.constActivities = this.constants[0].activities;
         console.log('constants: ', this.constants);
-      })
-
+      });
   }
+
+  cancelEdit() {
+    this.getAnimal();
+    this.toggleReadOnly();
+  }
+
+  toggleReadOnly(){ this.isReadOnly = !this.isReadOnly}
+  toggleHideForm(){ this.hideForm = !this.hideForm}
 
 }

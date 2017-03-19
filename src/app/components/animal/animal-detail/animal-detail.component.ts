@@ -83,6 +83,8 @@ export class AnimalDetailComponent implements OnInit {
     console.log('Creating blank animal');
     //this.animal = new Animal('',null, '', '', '', '', '', null, null, '', '', '', null);
     this.animal.birth.date = new Date();
+    this.animal.patient_since = new Date();
+    this.isReadOnly = false;
 
   }
 

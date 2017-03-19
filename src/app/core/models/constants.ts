@@ -1,4 +1,4 @@
-export class Constants {
+export interface Constants {
 	breeds: [{}];
   genders: [{}];
   colours: [{}];

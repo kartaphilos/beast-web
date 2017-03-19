@@ -1,19 +1,23 @@
-export class Animal {
-	id: string;
-	patient_since: Date;
+export interface Animal {
+  id: string;
+  patient_since: Date;
   species: string; // Horse, Dog
-  name: {
-      full: string,
-      display: string
-  };
+  name: Name;
   breed: string;
   colour: string;
-  birth: {
-      date: Date,
-      estimated: boolean
-  };
+  birth: Birth;
   size: string;
   activity: string;
   gender: string;
   flagged: boolean;
+}
+
+export interface Name {
+  full: string,
+  display: string
+}
+
+export interface Birth {
+	date: Date,
+	estimated: boolean
 }

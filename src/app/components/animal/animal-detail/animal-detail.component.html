@@ -1,5 +1,5 @@
 <div *ngIf="animal" [hidden]="hideForm">
-  <form class="animal-detail-form" #form="ngForm">
+  <form (ngSubmit)="saveAnimal()" class="animal-detail-form" #animalForm="ngForm">
     <table class="full-width" cellspacing="0">
       <tr>
         <td>
@@ -25,23 +25,19 @@
       <tr>
         <td>
           <md-input-container class="full-width">
-            <input mdInput placeholder="Display name" [disabled]="isReadOnly ? true : null" [(ngModel)]="animal.name.display" name="display">
+            <input mdInput placeholder="Display name" [disabled]="isReadOnly ? true : null" [ngModel]="animal.name?.display" (ngModelChange)="animal.name.display = $event" name="display">
           </md-input-container>
         </td>
         <td>
           <md-input-container class="full-width">
-            <input mdInput placeholder="Full Name" [disabled]="isReadOnly ? true : null" [(ngModel)]="animal.name.full" name="full">
+            <input mdInput placeholder="Full Name" [disabled]="isReadOnly ? true : null" [ngModel]="animal.name?.full" (ngModelChange)="animal.name.full = $event" name="full">
           </md-input-container>
         </td>
       </tr>
       <tr>
         <td>
           <md-input-container>
-            <input
-              mdInput placeholder="Size"
-              #size
-              [disabled]="isReadOnly ? true : null"
-              [(ngModel)]="animal.size" name="size">
+            <input mdInput placeholder="Size" #size [disabled]="isReadOnly ? true : null" [(ngModel)]="animal.size" name="size">
           </md-input-container>
         </td>
         <td>
@@ -75,7 +71,7 @@
       <tr>
         <td>
           <md-input-container>
-            <input mdInput placeholder="Birth Date" [disabled]="isReadOnly ? true : null" type="date" [ngModel]="animal.birth.date | date:'yyyy-MM-dd'" name="birth.date">
+            <input mdInput placeholder="Birth Date" [disabled]="isReadOnly ? true : null" type="date" [ngModel]="animal.birth?.date | date:'yyyy-MM-dd'" name="birth.date">
           </md-input-container>
         </td>
         <td>
@@ -92,11 +88,12 @@
       <button type="button" (click)="cancelEdit()"><md-icon>undo</md-icon>Cancel</button>
       <button type="button"><md-icon>save</md-icon>Save</button>
     </div>
-<hr>
+    <hr>
     <span>READ ONLY= {{isReadOnly}}</span>
     <p>brackets: [{{isReadOnly ? true : null}}]</p>
-    <p>{{ form.value | json }}</p>
-                  <br><h3>State: {{size.className}}</h3>
+    <p>{{ animalForm.value | json }}</p>
+    <br>
+    <h3>State: {{size?.className}}</h3>
   </form>
 </div>
 

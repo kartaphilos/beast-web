@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { Observable } from 'rxjs';
 
 import 'rxjs/add/operator/switchMap';
 
-import { Animal, Constants } from './../../../core/models';
-//import { Constants } from './../../../core/models';
+import { Animal, Name, Birth, Constants } from './../../../core/models';
 import { AnimalService } from './../../../core/services';
 import { ConstantsService } from './../../../core/services';
-
 
 @Component({
   selector: 'app-animal-detail',
@@ -16,14 +15,17 @@ import { ConstantsService } from './../../../core/services';
   styleUrls: ['./animal-detail.component.scss']
 })
 export class AnimalDetailComponent implements OnInit {
-  animal: Animal;
+  animal: Animal = <Animal>{ name: {}, birth: {}, species: 'horse' };
+  //animal = new Animal();
   constBreeds: [{}];
   constGenders: [{}];
   constColours: [{}];
   constActivities: [{}];
   constants: Constants[];
-  private isReadOnly:boolean=true;
-  private hideForm:boolean=false;
+  private id;
+  private isNewAnimal: boolean = true;
+  private isReadOnly: boolean = true;
+  private hideForm: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -33,17 +35,10 @@ export class AnimalDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.getConstants();
-    this.getAnimal();
-  }
-
-  getAnimal() {
-    this.route.params
-      .switchMap((params: Params) => this.animalService.getAnimal(params['id']))
-      .subscribe(animal => {
-        this.animal = animal;
-        console.log('animal: ', this.animal);
-        console.log('animal gender: ', this.animal.gender);
-      });
+    // Logic to decide if a 'new'/create animal or if a view/edit of existing animal
+    // by url?/params? => ID=null||new
+    this.getId();
+    //this.getAnimal();
   }
 
   getConstants() {
@@ -58,12 +53,52 @@ export class AnimalDetailComponent implements OnInit {
       });
   }
 
+  getAnimal(): void {
+    this.route.params
+      .switchMap((p: Params) => this.animalService.getAnimal(p['id']))
+      .subscribe(a => {
+        this.animal = a;
+        console.log('animal: ', this.animal);
+      });
+  }
+
+  getId(): void {
+    this.route.params.subscribe(params => {
+      this.id = params['id'];// || null;
+      console.log('id: ', this.id);
+      if (this.id != null) {
+        this.isNewAnimal = false;
+        console.log('New? ', this.isNewAnimal);
+        this.getAnimal();
+      }
+      else {
+        console.log('New? ', this.isNewAnimal);
+        this.newAnimal();
+        console.log('Blank Animal: ', this.animal);
+      }
+    })
+  }
+
+  newAnimal(): void {
+    console.log('Creating blank animal');
+    //this.animal = new Animal('',null, '', '', '', '', '', null, null, '', '', '', null);
+    this.animal.birth.date = new Date();
+
+  }
+
+
   cancelEdit() {
     this.getAnimal();
     this.toggleReadOnly();
   }
 
-  toggleReadOnly(){ this.isReadOnly = !this.isReadOnly}
-  toggleHideForm(){ this.hideForm = !this.hideForm}
+  saveAnimal() {
+    // Read form values
+    // Compare to original animal state.  If differences make API call with update/create
+    // if save required:- if original ID is null then a POST (ie create) otherwise PUT (ie. update)
+  }
+
+  toggleReadOnly() { this.isReadOnly = !this.isReadOnly }
+  toggleHideForm() { this.hideForm = !this.hideForm }
 
 }

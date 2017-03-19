@@ -38,6 +38,10 @@ export class AnimalListComponent implements OnInit {
     this.router.navigate(['/animal/detail', animal.id]);
   }
 
+  createAnimal(): void {
+    this.router.navigate(['/animal/detail/']);
+  }
+
   add(name: string): void {
     name = name.trim();
     if (!name) { return; }

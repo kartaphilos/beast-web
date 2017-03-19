@@ -9,6 +9,7 @@ const routes: Routes = [
   //  { path: '', redirectTo: 'animal', pathMatch: 'full' },
   { path: 'animal', component: AnimalListComponent },
   { path: 'animal/detail/:id', component: AnimalDetailComponent },
+  { path: 'animal/detail', component: AnimalDetailComponent },
   { path: 'location', component: LocationListComponent,
     children: [ //Don't make a child route if to render is same outlet as parent
       { path: 'detail/:id', component: LocationDetailComponent }

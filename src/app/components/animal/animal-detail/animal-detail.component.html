@@ -81,13 +81,21 @@
 
     </table>
 
-    <div [hidden]="!isReadOnly ? true : null">
+    <div class="buttons">
+      <span [hidden]="!isReadOnly ? true : null">
       <button type="button" (click)="toggleReadOnly()"><md-icon>mode_edit</md-icon>Edit</button>
-    </div>
-    <div [hidden]="isReadOnly ? true : null">
+    </span>
+      <span [hidden]="(isReadOnly || isNewAnimal) ? true : null">
       <button type="button" (click)="cancelEdit()"><md-icon>undo</md-icon>Cancel</button>
+    </span>
+      <span [hidden]="(isReadOnly || !isNewAnimal) ? true : null">
+      <button type="button" (click)="back()"><md-icon>undo</md-icon>Back</button>
+    </span>
+      <span [hidden]="isReadOnly ? true : null">
       <button type="button"><md-icon>save</md-icon>Save</button>
+    </span>
     </div>
+
     <hr>
     <span>READ ONLY= {{isReadOnly}}</span>
     <p>brackets: [{{isReadOnly ? true : null}}]</p>

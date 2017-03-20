@@ -3,6 +3,18 @@
     <table class="full-width" cellspacing="0">
       <tr>
         <td>
+          <md-input-container class="full-width">
+            <input mdInput placeholder="Display name" required [disabled]="isReadOnly ? true : null" [(ngModel)]="animal.name.display" name="display">
+          </md-input-container>
+        </td>
+        <td>
+          <md-input-container class="full-width">
+            <input mdInput placeholder="Full Name" required [disabled]="isReadOnly ? true : null" [ngModel]="animal.name.full || animal.name.display " (ngModelChange)="animal.name.full = $event" name="full">
+          </md-input-container>
+        </td>
+      </tr>
+      <tr>
+        <td>
           <md-input-container>
             <input mdInput placeholder="Species" required disabled [(ngModel)]="animal.species" name="species">
           </md-input-container>
@@ -20,18 +32,6 @@
               {{gender.value}}
             </md-option>
           </md-select>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <md-input-container class="full-width">
-            <input mdInput placeholder="Display name" required [disabled]="isReadOnly ? true : null" [(ngModel)]="animal.name.display" name="display">
-          </md-input-container>
-        </td>
-        <td>
-          <md-input-container class="full-width">
-            <input mdInput placeholder="Full Name" required [disabled]="isReadOnly ? true : null" [ngModel]="animal.name.full || animal.name.display " (ngModelChange)="animal.name.full = $event" name="full">
-          </md-input-container>
         </td>
       </tr>
       <tr>
@@ -56,29 +56,24 @@
       </tr>
       <tr>
         <td>
-          <md-input-container>
-            <input mdInput placeholder="ID" disabled [(ngModel)]="animal.id" name="id">
-          </md-input-container>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <md-input-container>
-            <input mdInput placeholder="Patient Since" [disabled]="isReadOnly ? true : null" type="date" [ngModel]="animal.patient_since | date:'yyyy-MM-dd'" name="patient_since">
-          </md-input-container>
-        </td>
-      </tr>
-      <tr>
-        <td>
           <md-input-container><input mdInput placeholder="Age" type="number" step="0.1" [disabled]="isReadOnly ? true : null" [(ngModel)]="age" name="age"></md-input-container>
         </td>
         <td>
           <md-input-container>
-            <input mdInput placeholder="Birth Date" [disabled]="isReadOnly ? true : null" type="date" [ngModel]="animal.birth?.date | date:'yyyy-MM-dd'" name="birth.date">
+            <input mdInput placeholder="Birth Date" disabled type="date" [ngModel]="animal.birth?.date | date:'yyyy-MM-dd'" name="birth.date">
+          </md-input-container>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <md-input-container>
+            <input mdInput placeholder="ID" disabled [(ngModel)]="animal.id" name="id">
           </md-input-container>
         </td>
         <td>
-          <md-checkbox [(ngModel)]="animal.birth.estimated" name="birth.estimated" [disabled]="isReadOnly ? true : null">Estimated Date</md-checkbox>
+          <md-input-container>
+            <input mdInput placeholder="Patient Since" [disabled]="isReadOnly ? true : null" type="date" [ngModel]="animal.patient_since | date:'yyyy-MM-dd'" name="patient_since">
+          </md-input-container>
         </td>
       </tr>
 
@@ -100,8 +95,7 @@
     </div>
 
     <hr>
-    <span>READ ONLY= {{isReadOnly}}</span>
-    brackets: [{{isReadOnly ? true : null}}]
+    <span>READ ONLY= {{isReadOnly}}</span> brackets: [{{isReadOnly ? true : null}}]
     <pre>valid form? {{ f.valid }}</pre>
     <pre>invalid form? {{ f.invalid }}</pre>
     <p>{{ f.value | json }}</p>

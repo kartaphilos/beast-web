@@ -41,7 +41,7 @@ export class AnimalService {
 
 	create(animal: Animal): Promise<Animal> {
 		return this.http
-			.post(this.animalsUrl, JSON.stringify({name: name}), {headers: this.headers})
+			.post(this.animalsUrl, JSON.stringify(animal))
 			.toPromise()
 			.then(res => res.json().data)
 			.catch(this.handleError);

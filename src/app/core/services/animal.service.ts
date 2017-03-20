@@ -39,7 +39,7 @@ export class AnimalService {
 			.catch(this.handleError);
 	}
 
-	create(name: string): Promise<Animal> {
+	create(animal: Animal): Promise<Animal> {
 		return this.http
 			.post(this.animalsUrl, JSON.stringify({name: name}), {headers: this.headers})
 			.toPromise()

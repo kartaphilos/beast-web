@@ -119,15 +119,16 @@ export class AnimalDetailComponent implements OnInit {
     console.log('Valid? ', valid);
     console.log('Form Activity: ', value.activity);
     console.log('Form Age: ', value.age);
+    this.animal.birth.date = new Date(this.calculateBirthDate(value.age));
+    if (!this.animal.name.full) this.animal.name.full = this.animal.name.display;
 
     if (this.isNewAnimal) {
       console.log('Create call');
       // Following needed in dev state for in-memory API
       this.animal.patient_since = new Date();
-      this.animal.birth.date = new Date(this.calculateBirthDate(value.age));
       this.animal.id = UUID.UUID();
       // Set full to display if not set
-      if (!this.animal.name.full) this.animal.name.full = this.animal.name.display;
+
       console.log('UUID: ', this.animal.id);
       console.log('New Animal: ', this.animal);
       this.animalService.create(this.animal)

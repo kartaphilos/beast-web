@@ -38,10 +38,6 @@ export class AnimalListComponent implements OnInit {
     this.router.navigate(['/animal/detail', animal.id]);
   }
 
-  createAnimal(): void {
-    this.router.navigate(['/animal/detail/']);
-  }
-
   add(animal: Animal): void {
     if (!animal) { return; }
     this.animalService.create(animal)
@@ -51,8 +47,8 @@ export class AnimalListComponent implements OnInit {
       });
   }
 
-  create(): void { // Function not used?  
-    this.router.navigate(['/animal/detail']);
+  create(): void {
+    this.router.navigate(['/animal/detail/']);
   }
 
   delete(animal: Animal): void {

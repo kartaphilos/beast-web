@@ -42,17 +42,17 @@ export class AnimalListComponent implements OnInit {
     this.router.navigate(['/animal/detail/']);
   }
 
-  add(name: string): void {
-    name = name.trim();
-    if (!name) { return; }
-    this.animalService.create(name)
-      .then(animal => {
-        this.animals.push(animal);
+  add(animal: Animal): void {
+    if (!animal) { return; }
+    this.animalService.create(animal)
+      .then(a => {
+        this.animals.push(a);
         this.selectedAnimal = null;
       });
   }
-  create(): void {
-    this.router.navigate(['/animaldetail']);
+
+  create(): void { // Function not used?  
+    this.router.navigate(['/animal/detail']);
   }
 
   delete(animal: Animal): void {

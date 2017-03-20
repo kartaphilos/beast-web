@@ -37,7 +37,7 @@
       <tr>
         <td>
           <md-input-container>
-            <input mdInput placeholder="Size" type="number" step="0.1" required [disabled]="isReadOnly ? true : null" [(ngModel)]="animal.size" name="size">
+            <input mdInput placeholder="Size" type="number" step="0.1" min="10" max="19" required [disabled]="isReadOnly ? true : null" [(ngModel)]="animal.size" name="size">
           </md-input-container>
         </td>
         <td>
@@ -56,7 +56,20 @@
       </tr>
       <tr>
         <td>
-          <md-input-container><input mdInput placeholder="Age" type="number" step="0.1" [disabled]="isReadOnly ? true : null" [(ngModel)]="age" name="age"></md-input-container>
+          <md-input-container>
+            <input mdInput placeholder="Age" required type="number" step="0.1" min="1" max="35" [disabled]="isReadOnly ? true : null" [(ngModel)]="age" name="age" #f.age="ngModel">
+            <div *ngIf="age?.errors && (age.dirty || age.touched)">
+              <div [hidden]="!age.errors.required">
+                Age is required
+              </div>
+              <div [hidden]="!age.errors.min">
+                Age must be 1 or more.
+              </div>
+              <div [hidden]="!age.errors.maxlength">
+                Age must be 35 or younger
+              </div>
+            </div>
+          </md-input-container>
         </td>
         <td>
           <md-input-container>

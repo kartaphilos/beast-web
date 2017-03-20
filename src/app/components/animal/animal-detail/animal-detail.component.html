@@ -37,7 +37,7 @@
       <tr>
         <td>
           <md-input-container>
-            <input mdInput placeholder="Size" required [disabled]="isReadOnly ? true : null" [(ngModel)]="animal.size" name="size">
+            <input mdInput placeholder="Size" type="number" step="0.1" required [disabled]="isReadOnly ? true : null" [(ngModel)]="animal.size" name="size">
           </md-input-container>
         </td>
         <td>
@@ -70,6 +70,9 @@
       </tr>
       <tr>
         <td>
+          <md-input-container><input mdInput placeholder="Age" type="number" step="0.1" [disabled]="isReadOnly ? true : null" [(ngModel)]="age" name="age"></md-input-container>
+        </td>
+        <td>
           <md-input-container>
             <input mdInput placeholder="Birth Date" [disabled]="isReadOnly ? true : null" type="date" [ngModel]="animal.birth?.date | date:'yyyy-MM-dd'" name="birth.date">
           </md-input-container>
@@ -89,7 +92,7 @@
       <button type="button" (click)="cancelEdit()"><md-icon>undo</md-icon>Cancel</button>
     </span>
       <span [hidden]="(isReadOnly || !isNewAnimal) ? true : null">
-      <button type="button" (click)="back()"><md-icon>undo</md-icon>Back</button>
+      <button type="button" (click)="goBack()"><md-icon>undo</md-icon>Back</button>
     </span>
       <span [hidden]="isReadOnly ? true : null">
       <button type="submit" [disabled]="f.invalid"><md-icon>save</md-icon>Save</button>

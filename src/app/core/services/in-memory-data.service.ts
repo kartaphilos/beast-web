@@ -17,7 +17,7 @@ export class InMemoryDataService implements InMemoryDbService {
         "species": "horse",
         "breed": "Shire",
         "colour": "White",
-        "size": "15.1h",
+        "size": "15.1",
         "activity": "Eventing",
         "gender": "Stallion"
       },
@@ -34,7 +34,7 @@ export class InMemoryDataService implements InMemoryDbService {
         "id": "0d825cac-5756-4388-a243-542e1db78216",
         "breed": "Nag",
         "colour": "Chestnut",
-        "size": "16.1h",
+        "size": "16.1",
         "activity": "Eating",
         "gender": "Mare"
       },
@@ -52,7 +52,7 @@ export class InMemoryDataService implements InMemoryDbService {
         "species": "horse",
         "breed": "Arab",
         "colour": "Palomino",
-        "size": "15.2h",
+        "size": "15.2",
         "activity": "Hacking",
         "gender": "Gelding"
       },
@@ -70,7 +70,7 @@ export class InMemoryDataService implements InMemoryDbService {
         "species": "horse",
         "breed": "Cob",
         "colour": "Grey",
-        "size": "15.1h",
+        "size": "14.1",
         "activity": "Eating",
         "gender": "Mare"
       }

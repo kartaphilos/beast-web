@@ -1,21 +1,21 @@
 <div *ngIf="animal" [hidden]="hideForm">
-  <form (ngSubmit)="saveAnimal()" class="animal-detail-form" #animalForm="ngForm">
+  <form (ngSubmit)="saveAnimal(f)" class="detail-form" #f="ngForm">
     <table class="full-width" cellspacing="0">
       <tr>
         <td>
           <md-input-container>
-            <input mdInput placeholder="Species" disabled [(ngModel)]="animal.species" name="species">
+            <input mdInput placeholder="Species" required disabled [(ngModel)]="animal.species" name="species">
           </md-input-container>
         </td>
         <td>
-          <md-select placeholder="Breed" [disabled]="isReadOnly ? true : null" [(ngModel)]="animal.breed" name="breed">
+          <md-select placeholder="Breed" required [disabled]="isReadOnly ? true : null" [(ngModel)]="animal.breed" name="breed">
             <md-option *ngFor="let breed of constBreeds" [value]="breed.value">
               {{breed.value}}
             </md-option>
           </md-select>
         </td>
         <td>
-          <md-select placeholder="Gender" [disabled]="isReadOnly ? true : null" [(ngModel)]="animal.gender" name="gender">
+          <md-select placeholder="Gender" required [disabled]="isReadOnly ? true : null" [(ngModel)]="animal.gender" name="gender">
             <md-option *ngFor="let gender of constGenders" [value]="gender.value">
               {{gender.value}}
             </md-option>
@@ -25,30 +25,30 @@
       <tr>
         <td>
           <md-input-container class="full-width">
-            <input mdInput placeholder="Display name" [disabled]="isReadOnly ? true : null" [ngModel]="animal.name?.display" (ngModelChange)="animal.name.display = $event" name="display">
+            <input mdInput placeholder="Display name" required [disabled]="isReadOnly ? true : null" [(ngModel)]="animal.name.display" name="display">
           </md-input-container>
         </td>
         <td>
           <md-input-container class="full-width">
-            <input mdInput placeholder="Full Name" [disabled]="isReadOnly ? true : null" [ngModel]="animal.name?.full" (ngModelChange)="animal.name.full = $event" name="full">
+            <input mdInput placeholder="Full Name" required [disabled]="isReadOnly ? true : null" [ngModel]="animal.name.full || animal.name.display " (ngModelChange)="animal.name.full = $event" name="full">
           </md-input-container>
         </td>
       </tr>
       <tr>
         <td>
           <md-input-container>
-            <input mdInput placeholder="Size" #size [disabled]="isReadOnly ? true : null" [(ngModel)]="animal.size" name="size">
+            <input mdInput placeholder="Size" required [disabled]="isReadOnly ? true : null" [(ngModel)]="animal.size" name="size">
           </md-input-container>
         </td>
         <td>
-          <md-select placeholder="Colour" [disabled]="isReadOnly ? true : null" [(ngModel)]="animal.colour" name="colour">
+          <md-select placeholder="Colour" required [disabled]="isReadOnly ? true : null" [(ngModel)]="animal.colour" name="colour">
             <md-option *ngFor="let colour of constColours" [value]="colour.value">
               {{colour.icon}} {{colour.value}}
             </md-option>
           </md-select>
         </td>
         <td>
-          <md-select placeholder="Activity" [disabled]="isReadOnly ? true : null" [(ngModel)]="animal.activity" name="activity">
+          <md-select placeholder="Activity" required [disabled]="isReadOnly ? true : null" [(ngModel)]="animal.activity" name="activity">
             <md-option *ngFor="let activity of constActivities" [value]="activity.value">
               {{activity.value}}
             </md-option>
@@ -92,16 +92,16 @@
       <button type="button" (click)="back()"><md-icon>undo</md-icon>Back</button>
     </span>
       <span [hidden]="isReadOnly ? true : null">
-      <button type="button"><md-icon>save</md-icon>Save</button>
+      <button type="submit" [disabled]="f.invalid"><md-icon>save</md-icon>Save</button>
     </span>
     </div>
 
     <hr>
     <span>READ ONLY= {{isReadOnly}}</span>
-    <p>brackets: [{{isReadOnly ? true : null}}]</p>
-    <p>{{ animalForm.value | json }}</p>
-    <br>
-    <h3>State: {{size?.className}}</h3>
+    brackets: [{{isReadOnly ? true : null}}]
+    <pre>valid form? {{ f.valid }}</pre>
+    <pre>invalid form? {{ f.invalid }}</pre>
+    <p>{{ f.value | json }}</p>
   </form>
 </div>
 

@@ -115,7 +115,7 @@ export class InMemoryDataService implements InMemoryDbService {
       }
     ];
 
-    let location = [
+    let place = [
       {
         "_id": "a3c41465-7226-4cbe-93a0-78448cb29535",
         "since": "2017-03-21T15:09:20+00:00Z",
@@ -166,7 +166,7 @@ export class InMemoryDataService implements InMemoryDbService {
       },
     ];
 
-let locationconstants = [
+let placeconstants = [
   {
     'types': [
       { 'value': 'yard' },
@@ -181,11 +181,11 @@ let locationconstants = [
       { 'value': 'West Sussex' },
       { 'value': 'Gloucestershire' },
       { 'value': 'Oxfordshire' },
-      { 'value': 'Wilstshire' },
+      { 'value': 'Wiltshire' },
     ]
   }
 ];
 
-    return { animal, animalconstants, location, locationconstants };
+    return { animal, animalconstants, place, placeconstants };
   }
 }

@@ -1,3 +1,3 @@
 export * from './animal';
-export * from './location';
+export * from './place';
 export * from './constants';

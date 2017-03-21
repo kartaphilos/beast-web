@@ -3,53 +3,53 @@ import { Headers, Http }	from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import { Logger }					from 'angular2-logger/core';
 
-import { Location } from './../models';
+import { Place } from './../models';
 
 @Injectable()
-export class LocationService {
+export class PlaceService {
   private headers = new Headers({'Content-Type': 'application/json'});
-  private locationUrl = 'api/location';
+  private placeUrl = 'api/place';
 
   constructor(
 			private _logger: Logger,
 			private http: Http
 		) { }
 
-    getLocations(): Promise<Location[]> {
-  	    return this.http.get(this.locationUrl)
+    getPlaces(): Promise<Place[]> {
+  	    return this.http.get(this.placeUrl)
   		.toPromise()
-  		.then(response => response.json().data as Location[])
+  		.then(response => response.json().data as Place[])
   		.catch(this.handleError);
   	}
 
-  	getLocation(id: number): Promise<Location> {
-  		const url = `${this.locationUrl}/${id}`;
-  		this._logger.debug('location url: ', url);
+  	getPlace(id: number): Promise<Place> {
+  		const url = `${this.placeUrl}/${id}`;
+  		this._logger.debug('place url: ', url);
   		return this.http.get(url)
   			.toPromise()
-  			.then(response => response.json().data as Location)
+  			.then(response => response.json().data as Place)
   			.catch(this.handleError);
   	}
 
-  	update(location: Location): Promise<Location> {
-  		const url = `${this.locationUrl}/${location._id}`;
+  	update(place: Place): Promise<Place> {
+  		const url = `${this.placeUrl}/${place._id}`;
   		return this.http
-  			.put(url, JSON.stringify(location), {headers: this.headers})
+  			.put(url, JSON.stringify(place), {headers: this.headers})
   			.toPromise()
-  			.then( () => location)
+  			.then( () => place)
   			.catch(this.handleError);
   	}
 
-  	create(location: Location): Promise<Location> {
+  	create(place: Place): Promise<Place> {
   		return this.http
-  			.post(this.locationUrl, JSON.stringify(location))
+  			.post(this.placeUrl, JSON.stringify(place))
   			.toPromise()
   			.then(res => res.json().data)
   			.catch(this.handleError);
   	}
 
   	delete(id: string): Promise<void> {
-  		const url = `${this.locationUrl}/${id}`;
+  		const url = `${this.placeUrl}/${id}`;
   		return this.http.delete(url, {headers: this.headers})
   			.toPromise()
   			.then( () => null)

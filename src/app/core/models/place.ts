@@ -1,6 +1,6 @@
-export interface Location {
+export interface Place {
   _id: 'string';
-  location_since: Date;
+  since: Date;
   type: 'string';
   name: 'string';
   number: 'string';

@@ -22,8 +22,8 @@ export class PlaceService {
   		.catch(this.handleError);
   	}
 
-  	getPlace(id: number): Promise<Place> {
-  		const url = `${this.placeUrl}/${id}`;
+  	getPlace(_id: string): Promise<Place> {
+  		const url = `${this.placeUrl}/${_id}`;
   		this._logger.debug('place url: ', url);
   		return this.http.get(url)
   			.toPromise()

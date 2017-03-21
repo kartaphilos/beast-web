@@ -13,6 +13,6 @@ export interface Location {
 }
 
 export interface CoOrdinates {
-  lat: 'string';
-  long: 'string';
+  lat: 'number';
+  long: 'number';
 }

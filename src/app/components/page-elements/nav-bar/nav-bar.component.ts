@@ -9,7 +9,7 @@ export class NavBarComponent implements OnInit {
   tabLinks = [
       {label: 'Animal', link: 'animal'},
       {label: 'People', link: 'people'},
-      {label: 'Location', link: 'location'},
+      {label: 'Place', link: 'place'},
     ];
     activeLinkIndex = 0;
 

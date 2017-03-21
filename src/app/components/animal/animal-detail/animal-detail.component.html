@@ -1,4 +1,4 @@
-<div *ngIf="animal && constants" [hidden]="hideForm">
+<div *ngIf="animal && constants">
   <form (ngSubmit)="saveAnimal(f)" class="detail-form" #f="ngForm">
     <table class="full-width" cellspacing="0">
       <tr>
@@ -106,46 +106,17 @@
       <button type="submit" [disabled]="f.invalid"><md-icon>save</md-icon>Save</button>
     </span>
     </div>
+    <div>
 
-    <hr>
-    <span>READ ONLY= {{isReadOnly}}</span> brackets: [{{isReadOnly ? true : null}}]
-    <pre>valid form? {{ f.valid }}</pre>
-    <pre>invalid form? {{ f.invalid }}</pre>
-    <p>{{ f.value | json }}</p>
+    </div>
+    <div [hidden]="hideForm">
+      <hr>
+      <span>READ ONLY= {{isReadOnly}}</span> brackets: [{{isReadOnly ? true : null}}]
+      <pre>valid form? {{ f.valid }}</pre>
+      <pre>invalid form? {{ f.invalid }}</pre>
+      <p>{{ f.value | json }}</p>
+      <hr>
+    </div>
   </form>
-</div>
-
-<button md-raised-button (click)="toggleHideForm()">Hide Form</button>
-<span>HIDE FORM= {{hideForm}}</span>
-
-
-<!--
-  <p>
-      <md-input-container class="full-width">
-        <textarea mdInput placeholder="Address">Street</textarea>
-      </md-input-container>
-      <md-input-container class="full-width">
-        <textarea mdInput placeholder="Address 2">Willage/Town/City</textarea>
-      </md-input-container>
-    </p>
-    <table class="full-width" cellspacing="0">
-      <tr>
-        <td>
-          <md-input-container class="full-width">
-            <input mdInput placeholder="City">
-          </md-input-container>
-        </td>
-        <td>
-          <md-input-container class="full-width">
-            <input mdInput placeholder="Country">
-          </md-input-container>
-        </td>
-        <td>
-          <md-input-container class="full-width">
-            <input mdInput #postalCode maxlength="7" placeholder="Post Code">
-            <md-hint align="end">{{postalCode.value.length}} / 7</md-hint>
-          </md-input-container>
-        </td>
-      </tr>
-    </table>
--->
+  <hr>
+  <button md-raised-button (click)="toggleHideForm()">Toggle Diagnostics</button>

@@ -22,7 +22,7 @@ export class InMemoryDataService implements InMemoryDbService {
         "gender": "Stallion"
       },
       {
-"patient_since": "2013-01-01T00:00:00.000Z",
+        "patient_since": "2013-01-01T00:00:00.000Z",
         "name": {
           "full": "Canty1 Canterer",
           "display": "Canty1"
@@ -105,16 +105,68 @@ export class InMemoryDataService implements InMemoryDbService {
           { 'value': 'White' },
         ],
         'activities': [
-          { 'value': 'Jumping'},
-          { 'value': 'Hacking'},
-          { 'value': 'Dressage'},
-          { 'value': 'Eventing'},
-          { 'value': 'Eating'},
-          { 'value': 'Glue Making'},
+          { 'value': 'Jumping' },
+          { 'value': 'Hacking' },
+          { 'value': 'Dressage' },
+          { 'value': 'Eventing' },
+          { 'value': 'Eating' },
+          { 'value': 'Glue Making' },
         ]
       }
     ];
 
-    return { animal, constants };
+    let location = [
+      {
+        "_id": "a3c41465-7226-4cbe-93a0-78448cb29535",
+        "location_since": "2017-03-21T15:09:20+00:00Z",
+        "loctype": "yard",
+        "name": "Cow City Livery",
+        "number": "",
+        "street": "Church Lane, Farley Hill",
+        "city": "Reading",
+        "county": "Berkshire",
+        "postcode": "RG7 1UP",
+        "country": "GB",
+        "coordinates": {
+          "lat": "51.376520",
+          "long": "-0.916006"
+        }
+      },
+      {
+        "_id": "9821fe66-0d85-41b1-8447-025540cb0dfb",
+        "location_since": "2003-02-21T17:12:10.380Z",
+        "loctype": "house",
+        "name": "",
+        "number": "121",
+        "street": "Clarence Rd",
+        "city": "Fleet",
+        "county": "Hampshire",
+        "postcode": "GU513RS",
+        "country": "GB",
+        "coordinates": {
+          "lat": "51.279224",
+          "long": "-0.840605"
+        }
+      },
+      {
+        "_id": "dc09da2a-d5e4-41f2-893c-4d4c2cfcb2f9",
+        "location_since": "2006-02-18T13:43:09.707Z",
+        "loctype": "yard",
+        "name": "Pilcot Farm",
+        "number": "",
+        "street": "Pilcot",
+        "city": "Dogmersfield",
+        "county": "Hampshire",
+        "postcode": "RG27 8ST",
+        "country": "GB",
+        "coordinates": {
+          "lat": "51.271957",
+          "long": "-0.874162"
+        }
+      },
+
+    ];
+
+    return { animal, constants, location };
   }
 }

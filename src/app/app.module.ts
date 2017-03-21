@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { LOG_LOGGER_PROVIDERS } from 'angular2-logger/core';
 
 // Imports for loading & configuring the in-memory web api
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
@@ -41,7 +42,7 @@ import { NavBarComponent } from './components/page-elements/nav-bar/nav-bar.comp
     HttpModule,
     AppRoutingModule
   ],
-  providers: [ AnimalService, ConstantsService ],
+  providers: [ LOG_LOGGER_PROVIDERS, AnimalService, ConstantsService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

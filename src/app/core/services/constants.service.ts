@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http }	from '@angular/http';
+import { Logger }         from 'angular2-logger/core';
+
 import 'rxjs/add/operator/toPromise';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
@@ -17,11 +19,14 @@ export class ConstantsService {
   // TODO: Put this into a config file for switching to InMemory vs real API
   // TODO: (later later) - Boot up tests to check API ok
 
-  constructor(private http: Http) { }
+  constructor(
+    private _logger: Logger,
+    private http: Http
+  ) { }
 
   getBreeds(): Observable<any> {  // 'any' OR '[{}]' both work.
     const url = this.breedsUrl;
-    console.log('Breeds url: ', url);
+    this._logger.debug('Breeds url: ', url);
     return this.http.get(url)
       .map(response => response.json().data )
       .catch(this.handleError);
@@ -29,7 +34,7 @@ export class ConstantsService {
 
   getConstants(): Observable<Constants[]> {
     const url = this.constantsUrl;
-    console.log('Constants url: ', url);
+    this._logger.debug('Constants url: ', url);
     return this.http.get(url)
       .map(response => response.json().data )
       .catch(this.handleError);

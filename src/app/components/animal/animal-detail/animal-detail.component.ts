@@ -5,6 +5,7 @@ import { Observable }             from 'rxjs';
 import { UUID }                   from 'angular2-uuid';
 import { Location }               from '@angular/common';
 import * as moment                from 'moment';
+import { Logger }                 from 'angular2-logger/core';
 
 import 'rxjs/add/operator/switchMap';
 
@@ -32,6 +33,7 @@ export class AnimalDetailComponent implements OnInit {
   private hideForm: boolean = false;
 
   constructor(
+    private _logger: Logger,
     private route: ActivatedRoute,
     private animalService: AnimalService,
     private constantsService: ConstantsService,
@@ -54,7 +56,7 @@ export class AnimalDetailComponent implements OnInit {
         this.constGenders = this.constants[0].genders;
         this.constColours = this.constants[0].colours;
         this.constActivities = this.constants[0].activities;
-        console.log('constants: ', this.constants);
+        this._logger.debug('constants: ', this.constants);
       });
   }
 
@@ -64,8 +66,8 @@ export class AnimalDetailComponent implements OnInit {
       .subscribe(a => {
         this.animal = a;
         this.calculateAge();
-        console.log('animal: ', this.animal);
-        console.log('age: ', this.age);
+        this._logger.debug('animal: ', this.animal);
+        this._logger.debug('age: ', this.age);
       });
   }
 
@@ -77,31 +79,31 @@ export class AnimalDetailComponent implements OnInit {
 
   calculateBirthDate(yrs: number): string {
     let now = moment();
-    console.log('moment: ', now);
+    this._logger.debug('moment: ', now);
     let birth = moment().subtract(yrs, 'years');
-    console.log('birth: ', birth.format);
+    this._logger.debug('birth: ', birth.format);
     return birth.format();
   }
 
   getId(): void {
     this.route.params.subscribe(params => {
       this.id = params['id'];// || null;
-      console.log('id: ', this.id);
+      this._logger.debug('id: ', this.id);
       if (this.id != null) {
         this.isNewAnimal = false;
-        console.log('New? ', this.isNewAnimal);
+        this._logger.debug('New? ', this.isNewAnimal);
         this.getAnimal();
       }
       else {
-        console.log('New? ', this.isNewAnimal);
+        this._logger.debug('New? ', this.isNewAnimal);
         this.newAnimal();
-        console.log('Blank Animal: ', this.animal);
+        this._logger.debug('Blank Animal: ', this.animal);
       }
     })
   }
 
   newAnimal(): void {
-    console.log('Creating blank animal');
+    this._logger.debug('Creating blank animal');
     //this.animal = new Animal('',null, '', '', '', '', '', null, null, '', '', '', null);
     this.animal.patient_since = new Date();
     this.isReadOnly = false;
@@ -115,34 +117,34 @@ export class AnimalDetailComponent implements OnInit {
 
   saveAnimal({ value, valid }: { value: any, valid: boolean }) {
     // Read form values
-    console.log('Form Animal: ', value);
-    console.log('Valid? ', valid);
-    console.log('Form Activity: ', value.activity);
-    console.log('Form Age: ', value.age);
+    this._logger.debug('Form Animal: ', value);
+    this._logger.debug('Valid? ', valid);
+    this._logger.debug('Form Activity: ', value.activity);
+    this._logger.debug('Form Age: ', value.age);
     this.animal.birth.date = new Date(this.calculateBirthDate(value.age));
     if (!this.animal.name.full) this.animal.name.full = this.animal.name.display;
 
     if (this.isNewAnimal) {
-      console.log('Create call');
+      this._logger.debug('Create call');
       // Following needed in dev state for in-memory API
       this.animal.patient_since = new Date();
       this.animal.id = UUID.UUID();
       // Set full to display if not set
 
-      console.log('UUID: ', this.animal.id);
-      console.log('New Animal: ', this.animal);
+      this._logger.debug('UUID: ', this.animal.id);
+      this._logger.debug('New Animal: ', this.animal);
       this.animalService.create(this.animal)
         .then(() => this.goBack());
     }
     else {
-      console.log('Update call');
+      this._logger.debug('Update call');
       this.animalService.update(this.animal)
         .then(() => this.goBack());
     }
   }
 
   goBack() {
-    console.log('TODO Naviagate back');
+    this._logger.debug('TODO Naviagate back');
     this.location.back();
   }
 

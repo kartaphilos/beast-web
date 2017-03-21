@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Headers, Http }	from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
+import { Logger }					from 'angular2-logger/core';
+
 import { Animal } from './../models';
 
 @Injectable()
@@ -12,7 +14,10 @@ export class AnimalService {
 	// TODO: Put this into a config file for switching to InMemory vs real API
 	// TODO: (later later) - Boot up tests to check API ok
 
-	constructor(private http: Http) { }
+	constructor(
+			private _logger: Logger,
+			private http: Http
+		) { }
 
 	getAnimals(): Promise<Animal[]> {
 	    return this.http.get(this.animalsUrl)
@@ -23,7 +28,7 @@ export class AnimalService {
 
 	getAnimal(id: number): Promise<Animal> {
 		const url = `${this.animalsUrl}/${id}`;
-		console.log('animal url: ', url);
+		this._logger.debug('animal url: ', url);
 		return this.http.get(url)
 			.toPromise()
 			.then(response => response.json().data as Animal)

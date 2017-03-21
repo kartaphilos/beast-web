@@ -1,4 +1,4 @@
-<div *ngIf="animal" [hidden]="hideForm">
+<div *ngIf="animal && constants" [hidden]="hideForm">
   <form (ngSubmit)="saveAnimal(f)" class="detail-form" #f="ngForm">
     <table class="full-width" cellspacing="0">
       <tr>
@@ -21,14 +21,14 @@
         </td>
         <td>
           <md-select placeholder="Breed" required [disabled]="isReadOnly ? true : null" [(ngModel)]="animal.breed" name="breed">
-            <md-option *ngFor="let breed of constBreeds" [value]="breed.value">
+            <md-option *ngFor="let breed of constants.breeds" [value]="breed.value">
               {{breed.value}}
             </md-option>
           </md-select>
         </td>
         <td>
           <md-select placeholder="Gender" required [disabled]="isReadOnly ? true : null" [(ngModel)]="animal.gender" name="gender">
-            <md-option *ngFor="let gender of constGenders" [value]="gender.value">
+            <md-option *ngFor="let gender of constants.genders" [value]="gender.value">
               {{gender.value}}
             </md-option>
           </md-select>
@@ -42,14 +42,14 @@
         </td>
         <td>
           <md-select placeholder="Colour" required [disabled]="isReadOnly ? true : null" [(ngModel)]="animal.colour" name="colour">
-            <md-option *ngFor="let colour of constColours" [value]="colour.value">
+            <md-option *ngFor="let colour of constants.colours" [value]="colour.value">
               {{colour.icon}} {{colour.value}}
             </md-option>
           </md-select>
         </td>
         <td>
           <md-select placeholder="Activity" required [disabled]="isReadOnly ? true : null" [(ngModel)]="animal.activity" name="activity">
-            <md-option *ngFor="let activity of constActivities" [value]="activity.value">
+            <md-option *ngFor="let activity of constants.activities" [value]="activity.value">
               {{activity.value}}
             </md-option>
           </md-select>

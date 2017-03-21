@@ -20,17 +20,12 @@ import { ConstantsService } from './../../../core/services';
 })
 export class AnimalDetailComponent implements OnInit {
   animal: Animal = <Animal>{ name: {}, birth: {}, species: 'horse' };
-  //animal = new Animal();
-  constBreeds: [{}];
-  constGenders: [{}];
-  constColours: [{}];
-  constActivities: [{}];
-  constants: Constants[];
+  constants: Constants;
   age: number;
   private id;
   private isNewAnimal: boolean = true;
   private isReadOnly: boolean = true;
-  private hideForm: boolean = false;
+  private hideForm: boolean = false; // Not really needed as just playing around.
 
   constructor(
     private _logger: Logger,
@@ -51,12 +46,9 @@ export class AnimalDetailComponent implements OnInit {
   getConstants() {
     this.constantsService.getConstants()
       .subscribe(consts => {
-        this.constants = consts;
-        this.constBreeds = this.constants[0].breeds;
-        this.constGenders = this.constants[0].genders;
-        this.constColours = this.constants[0].colours;
-        this.constActivities = this.constants[0].activities;
+        this.constants = consts[0];
         this._logger.debug('constants: ', this.constants);
+        this._logger.debug('constants[0].breeds: ', this.constants.breeds);
       });
   }
 

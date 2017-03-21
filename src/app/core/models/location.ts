@@ -1,14 +1,14 @@
 export interface Location {
-  _id: string;
+  _id: 'string';
   location_since: Date;
   loctype: 'string';
   name: 'string';
   number: 'string';
   street: 'string';
   city: 'string';
-  county: 'string';
+  county: 'string'; //Autocomplete would be nice
   postcode: 'string';
-  country: 'string'
+  country: 'string';  //Autocomplete would be nice
   coordinates: CoOrdinates;
 }
 

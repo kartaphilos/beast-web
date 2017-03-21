@@ -76,7 +76,7 @@ export class InMemoryDataService implements InMemoryDbService {
       }
     ];
 
-    let constants = [
+    let animalconstants = [
       {
         'breeds': [
           { 'value': 'Luisitano' },
@@ -164,9 +164,28 @@ export class InMemoryDataService implements InMemoryDbService {
           "long": "-0.874162"
         }
       },
-
     ];
 
-    return { animal, constants, location };
+let locationconstants = [
+  {
+    'types': [
+      { 'value': 'yard' },
+      { 'value': 'home' },
+      { 'value': 'vets' },
+    ],
+    'countys': [
+      { 'value': 'Surrey' },
+      { 'value': 'Hampshire' },
+      { 'value': 'Berkshire' },
+      { 'value': 'Buckinghamshire' },
+      { 'value': 'West Sussex' },
+      { 'value': 'Gloucestershire' },
+      { 'value': 'Oxfordshire' },
+      { 'value': 'Wilstshire' },
+    ]
+  }
+];
+
+    return { animal, animalconstants, location, locationconstants };
   }
 }

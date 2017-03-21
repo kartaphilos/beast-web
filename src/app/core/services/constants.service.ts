@@ -7,14 +7,13 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
-import { Constants } from './../models';
+import { AnimalConstants, PlaceConstants } from './../models';
 
 @Injectable()
 export class ConstantsService {
   private headers = new Headers({ 'Content-Type': 'application/json' });
-  private constantsUrl = 'api/constants';
-  private breedsUrl = 'api/breeds';
-
+  private animalConstantsUrl = 'api/animalconstants/';
+  private placeConstantsUrl = 'api/placeconstants/';
 
   // TODO: Put this into a config file for switching to InMemory vs real API
   // TODO: (later later) - Boot up tests to check API ok
@@ -24,16 +23,17 @@ export class ConstantsService {
     private http: Http
   ) { }
 
-  getBreeds(): Observable<any> {  // 'any' OR '[{}]' both work.
-    const url = this.breedsUrl;
-    this._logger.debug('Breeds url: ', url);
+
+  getAnimalConstants(): Observable<AnimalConstants> {
+    const url = this.animalConstantsUrl;
+    this._logger.debug('Constants url: ', url);
     return this.http.get(url)
       .map(response => response.json().data )
       .catch(this.handleError);
   }
 
-  getConstants(): Observable<Constants> {
-    const url = this.constantsUrl;
+  getPlaceConstants(): Observable<PlaceConstants> {
+    const url = this.placeConstantsUrl;
     this._logger.debug('Constants url: ', url);
     return this.http.get(url)
       .map(response => response.json().data )

@@ -9,7 +9,7 @@ import { Logger }                 from 'angular2-logger/core';
 import 'rxjs/add/operator/switchMap';
 
 // My Stuff
-import { Animal, Name, Birth, Constants } from './../../../core/models';
+import { Animal, Name, Birth, AnimalConstants } from './../../../core/models';
 import { AnimalService } from './../../../core/services';
 import { ConstantsService } from './../../../core/services';
 
@@ -19,7 +19,7 @@ import { ConstantsService } from './../../../core/services';
   styleUrls: ['./animal-detail.component.scss']
 })
 export class AnimalDetailComponent implements OnInit {
-  constants: Constants;
+  constants: AnimalConstants;
   animal: Animal = <Animal>{ name: {}, birth: {}, species: 'horse' };
   private age: number;
   private id: string;
@@ -41,7 +41,7 @@ export class AnimalDetailComponent implements OnInit {
   }
 
   getConstants() {
-    this.constantsService.getConstants()
+    this.constantsService.getAnimalConstants()
       .subscribe(consts => {
         this.constants = consts[0]; // Come back as array
         this._logger.debug('constants: ', this.constants);

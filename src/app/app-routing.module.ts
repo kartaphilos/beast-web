@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { AnimalListComponent } from './components/animal/animal-list/animal-list.component';
 import { AnimalDetailComponent } from './components/animal/animal-detail/animal-detail.component';
+
 import { LocationListComponent, LocationDetailComponent } from './components/location';
 
 const routes: Routes = [
@@ -10,11 +11,14 @@ const routes: Routes = [
   { path: 'animal', component: AnimalListComponent },
   { path: 'animal/detail/:id', component: AnimalDetailComponent },
   { path: 'animal/detail', component: AnimalDetailComponent },
-  { path: 'location', component: LocationListComponent,
+  { path: 'location', component: LocationListComponent },
+  { path: 'location/detail/:id', component: LocationDetailComponent },
+  { path: 'location/detail', component: LocationDetailComponent },
+  /*{ path: 'location', component: LocationListComponent,
     children: [ //Don't make a child route if to render is same outlet as parent
       { path: 'detail/:id', component: LocationDetailComponent }
     ]
-  }
+  }*/
 ];
 
 @NgModule({

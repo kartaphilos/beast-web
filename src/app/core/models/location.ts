@@ -1,7 +1,7 @@
 export interface Location {
   _id: 'string';
   location_since: Date;
-  loctype: 'string';
+  type: 'string';
   name: 'string';
   number: 'string';
   street: 'string';

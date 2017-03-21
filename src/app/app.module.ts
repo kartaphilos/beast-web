@@ -10,7 +10,7 @@ import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService }  from './core/services';
 
 // Imports for app services
-import { AnimalService, ConstantsService } from './core/services';
+import { AnimalService, ConstantsService, LocationService } from './core/services';
 
 // Import teh components
 import { AppRoutingModule } from './app-routing.module';
@@ -42,7 +42,7 @@ import { NavBarComponent } from './components/page-elements/nav-bar/nav-bar.comp
     HttpModule,
     AppRoutingModule
   ],
-  providers: [ LOG_LOGGER_PROVIDERS, AnimalService, ConstantsService ],
+  providers: [ LOG_LOGGER_PROVIDERS, AnimalService, ConstantsService, LocationService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -20,7 +20,8 @@ import { ConstantsService } from './../../../core/services';
 })
 export class PlaceDetailComponent implements OnInit {
 
-  placeConstants: PlaceConstants;
+  private constants: PlaceConstants;
+
   place: Place = <Place>{ coordinates: {}, country: 'GB' };
   private _id: string;
   private isNewPlace: boolean = true;
@@ -29,12 +30,78 @@ export class PlaceDetailComponent implements OnInit {
   constructor(
     private _logger: Logger,
     private route: ActivatedRoute,
-    private PlaceService: PlaceService,
+    private placeService: PlaceService,
     private constantsService: ConstantsService,
     private location: Location
   ) { }
 
   ngOnInit() {
+    this.getConstants();
+    this.setNewOrExisting();
   }
+
+  getConstants() {
+    this.constantsService.getPlaceConstants()
+      .subscribe(consts => {
+        this.constants = consts[0]; // Come back as array
+        this._logger.debug('constants: ', this.constants);
+      });
+  }
+
+
+  setNewOrExisting(): void {
+    this.route.params.subscribe(params => {
+      this._id = params['id'];// || null;
+      this._logger.debug('id: ', this._id);
+      if (this._id) {
+        this.isNewPlace = false;
+        this._logger.debug('New? ', this.isNewPlace);
+        this.getPlace();
+      }
+      else {
+        this.isNewPlace = true;
+        this._logger.debug('New? ', this.isNewPlace);
+        this.isReadOnly = false; //No need to readonly view a blank place
+        this._logger.debug('Blank Place: ', this.place);
+      }
+    })
+  }
+
+  getPlace(): void {  //TODO: add error checking to catch for bad id
+    this.route.params
+      .switchMap((p: Params) => this.placeService.getPlace(p['id']))
+      .subscribe(a => {
+        this.place = a;
+        this._logger.debug('place: ', this.place);
+      });
+  }
+
+  savePlace({ value, valid }: { value: any, valid: boolean }) {
+    this._logger.debug('Form Place: ', value);
+    if (this.isNewPlace) {
+      this._logger.debug('Create call');
+      if (!this.place.since) this.place.since = new Date(); // If blank date default to now
+      this.place._id = UUID.UUID();
+      this._logger.debug('UUID: ', this.place._id);
+      this._logger.debug('New Place: ', this.place);
+      this.placeService.create(this.place)
+        .then(() => this.goBack());
+    }
+    else {
+      this._logger.debug('Update call');
+      this.placeService.update(this.place)
+        .then(() => this.goBack());
+    }
+  }
+
+  cancelEdit() {
+    this.getPlace();
+    this.toggleReadOnly();
+  }
+
+  goBack() { this.location.back() }
+
+  // Toggle functions for variables
+  toggleReadOnly() { this.isReadOnly = !this.isReadOnly }
 
 }

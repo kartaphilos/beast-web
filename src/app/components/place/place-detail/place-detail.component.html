@@ -1,7 +1,7 @@
 <p>
   place-detail works!
 </p>
-<div *ngIf="place && locConstants">
+<div *ngIf="place && constants">
   <form (ngSubmit)="saveLocation(f)" class="detail-form" #f="ngForm">
     <md-select placeholder="Property Type" required [disabled]="isReadOnly ? true : null" [(ngModel)]="place.type" name="type">
       <md-option *ngFor="let type of constants.types" [value]="type.value">

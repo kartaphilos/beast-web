@@ -34,7 +34,7 @@ import { HeaderComponent, FooterComponent, NavBarComponent } from './components/
   imports: [
     MaterialModule.forRoot(),
     InMemoryWebApiModule.forRoot(InMemoryDataService),
-    AgmCoreModule.forRoot({ apiKey: 'AIzaSyD1lC1zmPxDLSXyALN_X-pzLDgAVMVaHj0' }),
+    AgmCoreModule.forRoot({ apiKey: 'AIzaSyCVW-AvkNcqGNcLaavfN0UNCST96fEe86Q' }),
     BrowserModule,
     FormsModule,
     HttpModule,

@@ -24,8 +24,8 @@ import { HeaderComponent, FooterComponent, NavBarComponent } from './components/
     AppComponent,
     AnimalListComponent,
     AnimalDetailComponent,
-    PlaceDetailComponent,
     PlaceListComponent,
+    PlaceDetailComponent,
     HeaderComponent,
     FooterComponent,
     NavBarComponent
@@ -38,7 +38,7 @@ import { HeaderComponent, FooterComponent, NavBarComponent } from './components/
     HttpModule,
     AppRoutingModule
   ],
-  providers: [ LOG_LOGGER_PROVIDERS, AnimalService, ConstantsService, PlaceService ],
+  providers: [LOG_LOGGER_PROVIDERS, AnimalService, ConstantsService, PlaceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

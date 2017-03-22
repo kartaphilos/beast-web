@@ -118,7 +118,7 @@ export class InMemoryDataService implements InMemoryDbService {
     let place = [
       {
         "id": "a3c41465-7226-4cbe-93a0-78448cb29535",
-        "since": "2017-03-21T15:09:20+00:00Z",
+        "since": "2017-03-21T15:09:20.000Z",
         "type": "yard",
         "name": "Cow City Livery",
         "number": "",

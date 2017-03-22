@@ -25,14 +25,12 @@ export class HeaderComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-      gapi.signin2.render(
-        this.googleLoginButtonId,
-        {
-          "onSuccess": this.onGoogleLoginSuccess,
-          "scope": "profile",
-          "theme": "dark"
-        });
-    }
+    gapi.signin2.render(this.googleLoginButtonId, {
+      "onSuccess": this.onGoogleLoginSuccess,
+      "scope": "profile",
+      "theme": "dark"
+    });
+  }
 
   onGoogleLoginSuccess = (loggedInUser) => {
     this.zone.run(() => {

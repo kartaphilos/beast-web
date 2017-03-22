@@ -21,6 +21,8 @@ import { AnimalListComponent, AnimalDetailComponent } from './components/animal/
 import { PlaceListComponent, PlaceDetailComponent } from './components/place/';
 import { HeaderComponent, FooterComponent, NavBarComponent } from './components/page-elements/';
 import { SettingsComponent } from './components/settings/settings/settings.component';
+import { PersonListComponent } from './components/person/person-list/person-list.component';
+import { PersonDetailComponent } from './components/person/person-detail/person-detail.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { SettingsComponent } from './components/settings/settings/settings.compo
     HeaderComponent,
     FooterComponent,
     NavBarComponent,
-    SettingsComponent
+    SettingsComponent,
+    PersonListComponent,
+    PersonDetailComponent
   ],
   imports: [
     MaterialModule.forRoot(),

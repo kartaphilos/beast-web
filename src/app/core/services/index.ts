@@ -1,3 +1,4 @@
+export * from './global-events.service';
 export * from './animal.service';
 export * from './place.service';
 export * from './constants.service';

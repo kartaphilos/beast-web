@@ -1,5 +1,7 @@
 <md-toolbar color="primary">
   <md-icon>account_circle</md-icon>  <!-- TODO: Make click for login -->
+  <div *ngIf="googAvatarUrl"><img [src]="googAvatar" style="height:30px"></div>
+<!-- Yet to try <img [src]="(model?.getValue('boxshot') | async) || '' "> -->
   {{title}} Beast Treatment!
 <div id="{{googleLoginButtonId}}"></div>
   <button md-icon-button [md-menu-trigger-for]="menu">

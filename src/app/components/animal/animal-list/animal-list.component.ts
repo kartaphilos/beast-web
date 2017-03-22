@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit }      from '@angular/core';
+import { Router }                 from '@angular/router';
+import { Logger }                 from 'angular2-logger/core';
 
 import { Animal } from './../../../core/models';
 import { AnimalService } from './../../../core/services';
@@ -17,9 +18,10 @@ export class AnimalListComponent implements OnInit {
   selectedDialogOption: string;
 
   constructor(
+    private _logger: Logger,
     private router: Router,
     private animalService: AnimalService
-  ) {};
+  ) { };
 
   ngOnInit(): void {
     this.getAnimals();
@@ -35,6 +37,7 @@ export class AnimalListComponent implements OnInit {
   }
 
   gotoDetail(animal: Animal): void {
+    this._logger.debug('place_id: ', animal.id);
     this.router.navigate(['/animal/detail', animal.id]);
   }
 

@@ -98,7 +98,9 @@ export class PlaceDetailComponent implements OnInit {
     this.toggleReadOnly();
   }
 
-  goBack() { this.location.back() }
+  goBack() {
+    this.location.back();
+  }
 
   // Toggle functions for variables
   toggleReadOnly() { this.isReadOnly = !this.isReadOnly }

@@ -1,50 +1,51 @@
-<p>
-  place-detail works!
-</p>
+<div><br></div>
 <div *ngIf="place && constants">
-  <form (ngSubmit)="saveLocation(f)" class="detail-form" #f="ngForm">
+  <form (ngSubmit)="savePlace(f)" class="detail-form" #f="ngForm">
     <md-select placeholder="Property Type" required [disabled]="isReadOnly ? true : null" [(ngModel)]="place.type" name="type">
       <md-option *ngFor="let type of constants.types" [value]="type.value">
         {{type.value}}
       </md-option>
     </md-select>
-    <md-input-container class="full-width">
-      <input mdInput placeholder="Address Name" [disabled]="isReadOnly ? true : null" [(ngModel)]="place.name" name="name">
-      <input mdInput placeholder="Number" [disabled]="isReadOnly ? true : null" [(ngModel)]="place.number" name="number">
-      <input mdInput placeholder="Street" [disabled]="isReadOnly ? true : null" [(ngModel)]="place.street" name="street">
-    </md-input-container>
-    <md-input-container class="full-width">
+    <div>
+      <md-input-container>
+        <input mdInput placeholder="Address Name" [disabled]="isReadOnly ? true : null" [(ngModel)]="place.name" name="name">
+      </md-input-container>
+      <md-input-container>
+        <input mdInput placeholder="Number" [disabled]="isReadOnly ? true : null" [(ngModel)]="place.number" name="number">
+      </md-input-container>
+      <md-input-container>
+        <input mdInput placeholder="Street" [disabled]="isReadOnly ? true : null" [(ngModel)]="place.street" name="street">
+      </md-input-container>
+    </div>
+    <md-input-container>
       <input mdInput placeholder="City/Town" [disabled]="isReadOnly ? true : null" [(ngModel)]="place.city" name="city">
-      <input mdInput placeholder="County" [disabled]="isReadOnly ? true : null" [(ngModel)]="place.county" name="county">
     </md-input-container>
-    <md-input-container class="full-width">
+    <md-select placeholder="County" required [disabled]="isReadOnly ? true : null" [(ngModel)]="place.county" name="county">
+      <md-option *ngFor="let county of constants.countys" [value]="county.value">
+        {{county.value}}
+      </md-option>
+    </md-select>
+    <md-input-container>
       <input mdInput placeholder="Post Code" [disabled]="isReadOnly ? true : null" [(ngModel)]="place.postcode" name="postcode">
-      <input mdInput #postalCode maxlength="7" placeholder="Post Code">
       <md-hint align="end">Hmm</md-hint>
-      <input mdInput placeholder="Country" disabled [(ngModel)]="place.country" name="country">
     </md-input-container>
-    <table>
-      <tr>
-        <td>
-          <md-input-container>
-            <input mdInput placeholder="ID" disabled [(ngModel)]="place._id" name="id">
-          </md-input-container>
-        </td>
-        <td>
-          <md-input-container>
-            <input mdInput placeholder="Location Since" [disabled]="isReadOnly ? true : null" type="date" [ngModel]="place.since | date:'yyyy-MM-dd'" name="patient_since">
-          </md-input-container>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <md-input-container>
-            <input mdInput placeholder="Latitude" type="number" step="0.000001" min="-180" max="180" [disabled]="isReadOnly ? true : null" [(ngModel)]="place.coordinates.lat" name="lat">
-            <input mdInput placeholder="Longitude" type="number" step="0.000001" min="-180" max="180" [disabled]="isReadOnly ? true : null" [(ngModel)]="place.coordinates.long" name="long">
-          </md-input-container>
-        </td>
-      </tr>
-    </table>
+
+    <div>
+      <md-input-container>
+        <input mdInput placeholder="Place Since" [disabled]="isReadOnly ? true : null" type="date" [ngModel]="place.since | date:'yyyy-MM-dd'" name="patient_since">
+      </md-input-container>
+      <md-input-container>
+        <input mdInput placeholder="ID" disabled [(ngModel)]="place.id" name="id">
+      </md-input-container>
+    </div>
+    <div>
+      <md-input-container>
+        <input mdInput placeholder="Latitude" type="number" step="0.000001" min="-180" max="180" [disabled]="isReadOnly ? true : null" [(ngModel)]="place.coordinates.lat" name="lat">
+      </md-input-container>
+      <md-input-container>
+        <input mdInput placeholder="Longitude" type="number" step="0.000001" min="-180" max="180" [disabled]="isReadOnly ? true : null" [(ngModel)]="place.coordinates.long" name="long">
+      </md-input-container>
+    </div>
 
     <div label="buttons" class="buttons">
       <span [hidden]="!isReadOnly ? true : null">

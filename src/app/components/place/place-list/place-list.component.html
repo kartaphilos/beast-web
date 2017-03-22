@@ -5,7 +5,7 @@
   <md-list-item *ngFor="let place of places" [class.selected]="place === selectedPlace" (click)="gotoDetail(place)">
     <md-icon md-list-avatar>home</md-icon>
     <h3 md-line> {{place.name}} </h3>
-    <p md-line>Type: {{place.type}} PostCode: {{place.postcode}} ID: {{place._id}}</p>
+    <p md-line>Type: {{place.type}} PostCode: {{place.postcode}} ID: {{place.id}}</p>
     <p md-line>County: {{place.county}} </p>
   </md-list-item>
   <span class="add" (click)="create()"  ><button md-mini-fab><md-icon>add circle</md-icon></button></span>

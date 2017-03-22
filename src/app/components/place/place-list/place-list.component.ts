@@ -36,7 +36,8 @@ export class PlaceListComponent implements OnInit {
   }
 
   gotoDetail(place: Place): void {
-    this.router.navigate(['/place/detail', place._id]);
+    this._logger.debug('place.id: ', place.id);
+    this.router.navigate(['/place/detail', place.id]);
   }
 
   add(place: Place): void {

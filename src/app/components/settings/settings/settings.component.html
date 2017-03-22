@@ -2,6 +2,4 @@
   settings works!
 </p>
 
-<div *ngIf="googleUser">
-<pre>{{googleUser.access_token}}</pre>
-</div>
+<pre>{{googleUser.access_token | async }}</pre>

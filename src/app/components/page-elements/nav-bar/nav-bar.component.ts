@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit }  from '@angular/core';
+import { Location }           from '@angular/common';
 
 @Component({
   selector: 'app-nav-bar',
@@ -11,11 +12,14 @@ export class NavBarComponent implements OnInit {
       {label: 'People', link: 'people'},
       {label: 'Place', link: 'place'},
     ];
-    activeLinkIndex = 0;
+    public activeLinkIndex: number;
 
-  constructor() { }
+  constructor(
+        private location: Location
+  ) { }
 
   ngOnInit() {
+    console.log('Location: ', this.location);
   }
 
 }

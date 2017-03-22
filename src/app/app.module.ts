@@ -19,6 +19,8 @@ import { AppComponent } from './app.component';
 import { AnimalListComponent, AnimalDetailComponent } from './components/animal/';
 import { PlaceListComponent, PlaceDetailComponent } from './components/place/';
 import { HeaderComponent, FooterComponent, NavBarComponent } from './components/page-elements/';
+import { SettingsComponent } from './components/settings/settings/settings.component';
+
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import { HeaderComponent, FooterComponent, NavBarComponent } from './components/
     PlaceDetailComponent,
     HeaderComponent,
     FooterComponent,
-    NavBarComponent
+    NavBarComponent,
+    SettingsComponent
   ],
   imports: [
     MaterialModule.forRoot(),

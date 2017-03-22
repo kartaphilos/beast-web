@@ -1,4 +1,4 @@
-import { Component, OnInit }  from '@angular/core';
+import { Component, OnInit, OnDestroy }  from '@angular/core';
 import { Router }             from '@angular/router';
 import { Logger }             from 'angular2-logger/core';
 import { Subscription }       from 'rxjs/Subscription';
@@ -11,7 +11,7 @@ import { GlobalEventsService } from './../../../core/services/';
   templateUrl: './settings.component.html',
   styleUrls: ['./settings.component.scss']
 })
-export class SettingsComponent implements OnInit {
+export class SettingsComponent implements OnInit, OnDestroy {
 
   subscription: Subscription;
   googleUser: any;
@@ -29,12 +29,16 @@ export class SettingsComponent implements OnInit {
         this.googleUser = user;
         this.name = user.getBasicProfile().getName();
         this._logger.log('SettingsComponent: User Name: ', this.name);
-        
-    });
+
+      });
   }
 
   ngOnInit() {
     this._logger.log('Settings has arrived!');
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
 }

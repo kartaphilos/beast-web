@@ -1,4 +1,4 @@
-import { Component, OnInit, NgZone }  from '@angular/core';
+import { Component, OnInit, OnDestroy, NgZone }  from '@angular/core';
 import { Router }                     from '@angular/router';
 import { Logger }                     from 'angular2-logger/core';
 import { Subscription }               from 'rxjs/Subscription';
@@ -12,7 +12,7 @@ declare var gapi: any;
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   googleLoginButtonId = "google-login-button";
   userAuthToken = null;
@@ -34,6 +34,10 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
 
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
   ngAfterViewInit() {

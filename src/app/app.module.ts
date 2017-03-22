@@ -21,7 +21,6 @@ import { PlaceListComponent, PlaceDetailComponent } from './components/place/';
 import { HeaderComponent, FooterComponent, NavBarComponent } from './components/page-elements/';
 import { SettingsComponent } from './components/settings/settings/settings.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,

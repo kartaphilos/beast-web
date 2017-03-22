@@ -21,7 +21,7 @@ import { ConstantsService } from './../../../core/services';
 export class PlaceDetailComponent implements OnInit {
 
   private constants: PlaceConstants;
-
+  private mapZoom: number = 11;
   place: Place = <Place>{ coordinates: {}, country: 'GB' };
   private id: string;
   private isNewPlace: boolean = true;

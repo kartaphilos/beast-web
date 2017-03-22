@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { LOG_LOGGER_PROVIDERS } from 'angular2-logger/core';
+import { AgmCoreModule } from 'angular2-google-maps/core';
 
 // Imports for loading & configuring the in-memory web api
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
@@ -33,6 +34,7 @@ import { HeaderComponent, FooterComponent, NavBarComponent } from './components/
   imports: [
     MaterialModule.forRoot(),
     InMemoryWebApiModule.forRoot(InMemoryDataService),
+    AgmCoreModule.forRoot({ apiKey: 'AIzaSyD1lC1zmPxDLSXyALN_X-pzLDgAVMVaHj0' }),
     BrowserModule,
     FormsModule,
     HttpModule,

@@ -128,8 +128,8 @@ export class InMemoryDataService implements InMemoryDbService {
         "postcode": "RG7 1UP",
         "country": "GB",
         "coordinates": {
-          "lat": "51.376520",
-          "long": "-0.916006"
+          "lat": 51.376520,
+          "long": -0.916006
         }
       },
       {
@@ -144,8 +144,8 @@ export class InMemoryDataService implements InMemoryDbService {
         "postcode": "GU513RS",
         "country": "GB",
         "coordinates": {
-          "lat": "51.279224",
-          "long": "-0.840605"
+          "lat": 51.279224,
+          "long": -0.840605
         }
       },
       {
@@ -160,8 +160,8 @@ export class InMemoryDataService implements InMemoryDbService {
         "postcode": "RG27 8ST",
         "country": "GB",
         "coordinates": {
-          "lat": "51.271957",
-          "long": "-0.874162"
+          "lat": 51.271957,
+          "long": -0.874162
         }
       },
     ];

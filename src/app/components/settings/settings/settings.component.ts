@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router }                 from '@angular/router';
+import { Logger }                 from 'angular2-logger/core';
 
 @Component({
   selector: 'app-settings',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SettingsComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private _logger: Logger,
+    private router: Router,
+  ) { }
 
   ngOnInit() {
+    this._logger.log('Settings has arrived!');
   }
 
 }

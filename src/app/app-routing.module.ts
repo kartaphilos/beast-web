@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { AnimalListComponent } from './components/animal/animal-list/animal-list.component';
-import { AnimalDetailComponent } from './components/animal/animal-detail/animal-detail.component';
-
+import { AnimalListComponent, AnimalDetailComponent } from './components/animal';
 import { PlaceListComponent, PlaceDetailComponent } from './components/place';
+import { SettingsComponent } from './components/settings/settings/settings.component';
 
 const routes: Routes = [
   //  { path: '', redirectTo: 'animal', pathMatch: 'full' },
@@ -14,12 +13,14 @@ const routes: Routes = [
   { path: 'place', component: PlaceListComponent },
   { path: 'place/detail/:id', component: PlaceDetailComponent },
   { path: 'place/detail', component: PlaceDetailComponent },
+  { path: 'settings', component: SettingsComponent },
   /*{ path: 'place', component: PlaceListComponent,
     children: [ //Don't make a child route if to render is same outlet as parent
       { path: 'detail/:id', component: PlaceDetailComponent }
     ]
   }*/
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

@@ -22,8 +22,8 @@ export class PlaceService {
   		.catch(this.handleError);
   	}
 
-  	getPlace(_id: string): Promise<Place> {
-  		const url = `${this.placeUrl}/${_id}`;
+  	getPlace(id: string): Promise<Place> {
+  		const url = `${this.placeUrl}/${id}`;
   		this._logger.debug('place url: ', url);
   		return this.http.get(url)
   			.toPromise()
@@ -32,7 +32,7 @@ export class PlaceService {
   	}
 
   	update(place: Place): Promise<Place> {
-  		const url = `${this.placeUrl}/${place._id}`;
+  		const url = `${this.placeUrl}/${place.id}`;
   		return this.http
   			.put(url, JSON.stringify(place), {headers: this.headers})
   			.toPromise()

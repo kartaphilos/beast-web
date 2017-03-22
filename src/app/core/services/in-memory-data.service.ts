@@ -117,7 +117,7 @@ export class InMemoryDataService implements InMemoryDbService {
 
     let place = [
       {
-        "_id": "a3c41465-7226-4cbe-93a0-78448cb29535",
+        "id": "a3c41465-7226-4cbe-93a0-78448cb29535",
         "since": "2017-03-21T15:09:20+00:00Z",
         "type": "yard",
         "name": "Cow City Livery",
@@ -133,7 +133,7 @@ export class InMemoryDataService implements InMemoryDbService {
         }
       },
       {
-        "_id": "9821fe66-0d85-41b1-8447-025540cb0dfb",
+        "id": "9821fe66-0d85-41b1-8447-025540cb0dfb",
         "since": "2003-02-21T17:12:10.380Z",
         "type": "house",
         "name": "",
@@ -149,7 +149,7 @@ export class InMemoryDataService implements InMemoryDbService {
         }
       },
       {
-        "_id": "dc09da2a-d5e4-41f2-893c-4d4c2cfcb2f9",
+        "id": "dc09da2a-d5e4-41f2-893c-4d4c2cfcb2f9",
         "since": "2006-02-18T13:43:09.707Z",
         "type": "yard",
         "name": "Pilcot Farm",

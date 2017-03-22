@@ -23,7 +23,7 @@ export class PlaceDetailComponent implements OnInit {
   private constants: PlaceConstants;
 
   place: Place = <Place>{ coordinates: {}, country: 'GB' };
-  private _id: string;
+  private id: string;
   private isNewPlace: boolean = true;
   private isReadOnly: boolean = true;
 
@@ -48,12 +48,11 @@ export class PlaceDetailComponent implements OnInit {
       });
   }
 
-
   setNewOrExisting(): void {
     this.route.params.subscribe(params => {
-      this._id = params['id'];// || null;
-      this._logger.debug('id: ', this._id);
-      if (this._id) {
+      this.id = params['id'];// || null;
+      this._logger.debug('id: ', this.id);
+      if (this.id) {
         this.isNewPlace = false;
         this._logger.debug('New? ', this.isNewPlace);
         this.getPlace();
@@ -81,8 +80,8 @@ export class PlaceDetailComponent implements OnInit {
     if (this.isNewPlace) {
       this._logger.debug('Create call');
       if (!this.place.since) this.place.since = new Date(); // If blank date default to now
-      this.place._id = UUID.UUID();
-      this._logger.debug('UUID: ', this.place._id);
+      this.place.id = UUID.UUID();
+      this._logger.debug('UUID: ', this.place.id);
       this._logger.debug('New Place: ', this.place);
       this.placeService.create(this.place)
         .then(() => this.goBack());

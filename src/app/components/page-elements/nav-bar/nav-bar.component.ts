@@ -9,7 +9,7 @@ import { Location }           from '@angular/common';
 export class NavBarComponent implements OnInit {
   tabLinks = [
       {label: 'Animal', link: 'animal'},
-      {label: 'People', link: 'people'},
+      {label: 'Person', link: 'person'},
       {label: 'Place', link: 'place'},
     ];
     public activeLinkIndex: number;

@@ -11,7 +11,7 @@ import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService }  from './core/services';
 
 // Imports for app services
-import { GlobalEventsService }    from './core/services';
+import { GlobalEventsService, GoogleApiService }    from './core/services';
 import { AnimalService, ConstantsService, PlaceService } from './core/services';
 
 // Import teh components
@@ -47,7 +47,14 @@ import { PersonDetailComponent } from './components/person/person-detail/person-
     HttpModule,
     AppRoutingModule
   ],
-  providers: [LOG_LOGGER_PROVIDERS, GlobalEventsService,  AnimalService, ConstantsService, PlaceService],
+  providers: [
+    LOG_LOGGER_PROVIDERS,
+    GlobalEventsService,
+    GoogleApiService,
+    AnimalService,
+    ConstantsService,
+    PlaceService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

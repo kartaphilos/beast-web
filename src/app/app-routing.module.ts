@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { AnimalListComponent, AnimalDetailComponent } from './components/animal';
 import { PlaceListComponent, PlaceDetailComponent } from './components/place';
+import { PersonListComponent, PersonDetailComponent } from './components/person';
 import { SettingsComponent } from './components/settings/settings/settings.component';
 
 const routes: Routes = [
@@ -10,6 +11,9 @@ const routes: Routes = [
   { path: 'animal', component: AnimalListComponent },
   { path: 'animal/detail/:id', component: AnimalDetailComponent },
   { path: 'animal/detail', component: AnimalDetailComponent },
+  { path: 'person', component: PersonListComponent },
+  { path: 'person/detail/:id', component: PersonDetailComponent },
+  { path: 'person/detail', component: PersonDetailComponent },
   { path: 'place', component: PlaceListComponent },
   { path: 'place/detail/:id', component: PlaceDetailComponent },
   { path: 'place/detail', component: PlaceDetailComponent },

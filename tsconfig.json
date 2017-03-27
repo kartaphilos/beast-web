@@ -8,6 +8,13 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "target": "es5",
+    "types": [
+      "gapi",
+      "gapi.auth2",
+      "gapi.calendar",
+      "gapi.plus",
+      "gapi.people"
+    ],
     "lib": [
       "es2016",
       "dom"

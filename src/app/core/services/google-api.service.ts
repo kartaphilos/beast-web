@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Logger }       from 'angular2-logger/core';
 
+import { Person }    from './../../core/models'
 import { GlobalEventsService }    from './../../core/services'
 
 @Injectable()
@@ -15,9 +16,9 @@ export class GoogleApiService {
   *
   *     Puzzle: is how to know the libs are loaded prior to use?  Do this in index without defer or async?  gonna need them anyway
   */
-
-  private clientLoaded: boolean = false;
-
+  private isUserSignedIn: boolean = false;
+  private gapiClientInitialised: boolean = false;
+  private persons: Person[];
 
   constructor(
     private _logger: Logger,
@@ -25,56 +26,81 @@ export class GoogleApiService {
     this._logger.debug('Goog Service constructor');
   }
 
-  init() {
+  init() {  //load JS libraries & init client for each disc doc (via callback on load).
     this._logger.debug('Goog Service init()');
     this._logger.debug('init this: ', this);
-    gapi.load('client', this.initGoog.bind(this));  //This worked
-    //gapi.load('client', this.clientLoaded = true);
+    gapi.load('client:auth2', this.initGoogClient.bind(this));  //This worked
   }
 
-
-  initGoog(): void {
-    console.log('InitGoog This: ', this);
-    this._logger.debug('GoogService In InitGoog');
-    let peopleListParams = {
-      resourceName: 'people/me'
-    }
-    //gapi.client.setApiKey('AIzaSyCVW-AvkNcqGNcLaavfN0UNCST96fEe86Q'); // Just to see if gapi.client defined....
+  initGoogClient(): void {
+    this._logger.debug('InitGoogClient');
     gapi.client.init({
       apiKey: 'AIzaSyCVW-AvkNcqGNcLaavfN0UNCST96fEe86Q',
-      discoveryDocs: ["https://people.googleapis.com/$discovery/rest?version=v1"],
+      discoveryDocs: ["https://people.googleapis.com/$discovery/rest?version=v1"], // Add more discovery docs here
       clientId: '599582959655-jvalrr5t00f115dfebj47oktj02fup9k.apps.googleusercontent.com',
       scope: 'profile'
     })
       .then(() => {
         this._logger.debug('In gapi.init .then()');
-        // Listen for sign-in state changes.
+        // Listen for sign-in state changes & get initial state.
         gapi.auth2.getAuthInstance().isSignedIn.listen(this.updateSigninStatus);
-        this._logger.debug('In gapi.init. Calling updateSigninStatus');
-        // Handle the initial sign-in state.
         this.updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
-        return gapi.client.people.people.get({
-          resourceName: 'people/me/connections'
-        })
-        /*return gapi.client.request({
-          'path': 'https://people.googleapis.com/v1/people/me/connections',
-        })*/
+        this.gapiClientInitialised = true;
+        // For testing call endpoint after init.
+        this._logger.debug('ClientInit: ', this.gapiClientInitialised);
+        this._logger.debug('UserLogged in: ', this.isUserSignedIn);
+        this.getUsersConnections();
+        /*  .then((onFulfilled) => {
+            console.log(onFulfilled.result);
+          }, (onRejected) => {
+            console.log('Error: ' + onRejected.result.error.message);
+          });
+        */
       })
-      .then((response) => {
-        console.log(response.result);
-      }, (reason) => {
-        console.log('Error: ' + reason.result.error.message);
-      });
   }
 
+  googleLogin(): void {
+    gapi.auth2.getAuthInstance().signIn();
+  }
 
-  updateSigninStatus(isSignedIn): void {
-    // When signin status changes, this function is called.
-    // If the signin status is changed to signedIn, we make an API call.
+  googleLogout(): void {
+    gapi.auth2.getAuthInstance().signOut();
+  }
+
+  // ENDPOINTS
+  getUsersConnections(): Promise<Person[]> {
+    if (this.isUserSignedIn && this.gapiClientInitialised) {
+      return gapi.client.people.people.get({
+        resourceName: 'people/me/connections'
+      })
+        .then((onFullfilled) => {
+          let persons: Person[] = [];
+          //let i = 0;
+          onFullfilled.result.connections.forEach( (contact) => {
+            //p.push( contact.resourceName, contact.
+            this._logger.debug('id: ', contact.resourceName, ' name: ', contact.names[0].givenName);
+            let p: Person = <Person>{ name: {}, source: 'Google' };
+            p.source_id = contact.resourceName;
+            p.name.given = contact.names[0].givenName;
+            p.name.family = contact.names[0].familyName;
+            p.name.display = contact.names[0].displayName;
+            persons.push(p);
+            //i++
+          });
+          return persons;
+        })
+    }
+  }
+
+  updateSigninStatus(isSignedIn): void {  // Can't we just make call everytime?
+    // When signin status changes we set a variable.
     this._logger.debug('In updateSignInStatus()');
     if (isSignedIn) {
-      this._logger.debug('In updateSignInStatus: isSignedIn true');
-      // Do Stuff makeApiCall();
+      this._logger.debug('In updateSignInStatus: isSignedIn TRUE');
+      this.isUserSignedIn = true;
+    } else {
+      this._logger.debug('In updateSignInStatus: isSignedIn FALSE');
+      this.isUserSignedIn = false;
     }
   }
 

@@ -3,21 +3,11 @@
   "compilerOptions": {
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
+    "noImplicitAny": true,
     "declaration": false,
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "target": "es5",
-    "types": [
-      "gapi",
-      "gapi.auth2",
-      "gapi.calendar",
-      "gapi.plus",
-      "gapi.people"
-    ],
-    "lib": [
-      "es2016",
-      "dom"
-    ]
+    "target": "es2017"
   }
 }

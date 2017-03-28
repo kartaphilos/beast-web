@@ -24,6 +24,7 @@ import { SettingsComponent } from './components/settings/settings/settings.compo
 import { PersonListComponent } from './components/person/person-list/person-list.component';
 import { PersonDetailComponent } from './components/person/person-detail/person-detail.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

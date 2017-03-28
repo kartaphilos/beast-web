@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { GlobalEventsService, GoogleApiService }    from './core/services';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Beast Web';
+
+  constructor (
+    private _googleApiService: GoogleApiService
+  ) {
+        _googleApiService.init();
+    }
 }

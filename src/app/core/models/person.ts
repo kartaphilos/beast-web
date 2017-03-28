@@ -16,7 +16,7 @@ export interface Person {
 }
 
 export interface PersonName {
-  first: string,
-  surname: string,
+  given: string,
+  family: string,
   display: string
 }

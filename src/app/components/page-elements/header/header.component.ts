@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, NgZone }  from '@angular/core';
+import { Component, OnInit, OnDestroy, NgZone } from '@angular/core';
 import { Router }                     from '@angular/router';
 import { Logger }                     from 'angular2-logger/core';
 import { Subscription }               from 'rxjs/Subscription';
@@ -39,11 +39,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
-
+/*
   ngAfterViewInit() {
     gapi.signin2.render(this.googleLoginButtonId, {
       "onSuccess": this.onGoogleLoginSuccess,
-      "scope": "profile",
+      "scope": "profile https://www.googleapis.com/auth/calendar.readonly https://www.googleapis.com/auth/contacts.readonly https://www.google.com/m8/feeds/",
       "theme": "dark"
     });
   }
@@ -77,7 +77,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
       console.log('User signed out.');
     });
   }
-
+*/
   gotoUserSettings(): void {
     this.router.navigate(['/settings']);
   }

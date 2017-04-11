@@ -92,7 +92,16 @@ export class GoogleApiService {
     }
   }
 
-  updateSigninStatus(isSignedIn): void {  // Can't we just make call everytime?
+
+  getPersonsInGroup(): Promise<Person[]> {
+    return;
+  }
+
+  getPerson(id: string): Promise<Person> {
+    return;
+  }
+
+  updateSigninStatus(isSignedIn: boolean): void {  // Can't we just make call everytime?
     // When signin status changes we set a variable.
     this._logger.debug('In updateSignInStatus()');
     if (isSignedIn) {

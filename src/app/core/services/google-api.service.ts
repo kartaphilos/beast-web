@@ -73,7 +73,7 @@ export class GoogleApiService {
       return gapi.client.people.people.get({
         resourceName: 'people/me/connections'
       })
-        .then((onFullfilled) => {
+        .then( (onFullfilled) => {
           let persons: Person[] = [];
           //let i = 0;
           onFullfilled.result.connections.forEach( (contact) => {

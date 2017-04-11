@@ -63,7 +63,15 @@ export class PersonService {
     return response.json().data as Person; // why can't I do this 1-liner inline in the get Person?
   }
 
-  update(): void { }
+  update(person: Person): Promise<Person> {
+		const url = `${this.personUrl}/${person.id}`;
+		return this.http
+			.put(url, JSON.stringify(person), {headers: this.headers})
+			.toPromise()
+			.then( () => person)
+			.catch(this.handleError);
+	}
+
 
   create(person: Person): Promise<Person> {
 		return this.http

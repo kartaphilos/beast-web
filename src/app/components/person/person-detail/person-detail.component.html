@@ -1,3 +1,34 @@
 <p>
   person-detail works!
 </p>
+<div *ngIf="person">
+  <form (ngSubmit)="savePerson(f)" class="detail-form" #f="ngForm">
+    <div>
+      <md-input-container>
+        <input mdInput placeholder="Person Name" [disabled]="isReadOnly ? true : null" [(ngModel)]="person.name.given" name="name">
+      </md-input-container>
+      <md-input-container>
+        <input mdInput placeholder="Person Since" [disabled]="isReadOnly ? true : null" type="date" [ngModel]="person.person_since | date:'yyyy-MM-dd'" name="customer_since">
+      </md-input-container>
+      <md-input-container>
+        <input mdInput placeholder="ID" disabled [(ngModel)]="person.id" name="id">
+      </md-input-container>
+    </div>
+
+
+    <div label="buttons" class="buttons">
+      <span [hidden]="!isReadOnly ? true : null">
+    <button type="button" (click)="toggleReadOnly()"><md-icon>mode_edit</md-icon>Edit</button>
+    </span>
+      <span [hidden]="(isReadOnly || isNewAnimal) ? true : null">
+    <button type="button" (click)="cancelEdit()"><md-icon>undo</md-icon>Cancel</button>
+    </span>
+      <span [hidden]="(isReadOnly || !isNewAnimal) ? true : null">
+    <button type="button" (click)="goBack()"><md-icon>undo</md-icon>Back</button>
+    </span>
+      <span [hidden]="isReadOnly ? true : null">
+    <button type="submit" [disabled]="f.invalid"><md-icon>save</md-icon>Save</button>
+    </span>
+    </div>
+  </form>
+</div>

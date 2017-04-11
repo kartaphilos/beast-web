@@ -5,11 +5,10 @@ This model in app populated with all data needed...
 **/
 export interface Person {
   // Stored in DB
-  id: string,   // My DB reference
+  id: string,   // use id from source (google)
   source: string, //Google or ??
-  source_id: string, // Google or ?? key
   person_since: Date,
-  // Popiulated from Goog
+  // Populated from Goog
   name: PersonName,
   avatarUrl: string,
   gender: string,

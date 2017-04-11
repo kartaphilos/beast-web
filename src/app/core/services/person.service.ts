@@ -65,7 +65,14 @@ export class PersonService {
 
   update(): void { }
 
-  create(p: Person): void { }
+  create(person: Person): Promise<Person> {
+		return this.http
+			.post(this.personUrl, JSON.stringify(person))
+			.toPromise()
+			.then(res => res.json().data)
+			.catch(this.handleError);
+	}
+
 
   private handleError(error: any): Promise<any> {
     console.error('An error occurred', error);

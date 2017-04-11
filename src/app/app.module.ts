@@ -12,7 +12,7 @@ import { InMemoryDataService }  from './core/services';
 
 // Imports for app services
 import { GlobalEventsService, GoogleApiService }    from './core/services';
-import { AnimalService, ConstantsService, PlaceService } from './core/services';
+import { AnimalService, ConstantsService, PlaceService, PersonService } from './core/services';
 
 // Import teh components
 import { AppRoutingModule } from './app-routing.module';
@@ -54,7 +54,8 @@ import { PersonDetailComponent } from './components/person/person-detail/person-
     GoogleApiService,
     AnimalService,
     ConstantsService,
-    PlaceService
+    PlaceService,
+    PersonService
   ],
   bootstrap: [AppComponent]
 })

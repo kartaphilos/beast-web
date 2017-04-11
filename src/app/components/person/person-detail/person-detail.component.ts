@@ -72,7 +72,7 @@ savePerson({ value, valid }: { value: any, valid: boolean }) {
   //if (!this.person.name.full) this.person.name.full = this.person.name.display;
   if (this.isNewPerson) {
     this._logger.debug('Create call');
-    if (!this.person.customer_since) this.person.customer_since = new Date(); // If blank date default to now
+    if (!this.person.since) this.person.since = new Date(); // If blank date default to now
     this.person.id = UUID.UUID();
     this._logger.debug('UUID: ', this.person.id);
     this._logger.debug('New Person: ', this.person);

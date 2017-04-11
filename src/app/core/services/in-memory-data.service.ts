@@ -190,27 +190,27 @@ export class InMemoryDataService implements InMemoryDbService {
       {
         "id": "people/c29155056379758039",
         "source": "google",
-        "person_since": "2006-02-18T13:43:09.707Z"
+        "since": "2006-02-18T13:43:09.707Z"
       },
       {
         "id": "people/c6589266689581110140",
         "source": "google",
-        "person_since": "2010-05-29T13:43:09.707Z"
+        "since": "2010-05-29T13:43:09.707Z"
       },
       {
         "id": "people/c7759119069093632844",
         "source": "google",
-        "person_since": "2009-02-18T13:43:09.707Z"
+        "since": "2009-02-18T13:43:09.707Z"
       },
       {
         "id": "people/c7791926243301797329",
         "source": "google",
-        "person_since": "2008-02-18T13:43:09.707Z"
+        "since": "2008-02-18T13:43:09.707Z"
       },
       {
         "id": "people/c8134290348611851511",
         "source": "google",
-        "person_since": "2005-02-18T13:43:09.707Z"
+        "since": "2005-02-18T13:43:09.707Z"
       },
     ];
 

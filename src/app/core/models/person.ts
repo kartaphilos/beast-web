@@ -7,7 +7,7 @@ export interface Person {
   // Stored in DB
   id: string,   // use id from source (google)
   source: string, //Google or ??
-  person_since: Date,
+  since: Date,
   // Populated from Goog
   name: PersonName,
   avatarUrl: string,

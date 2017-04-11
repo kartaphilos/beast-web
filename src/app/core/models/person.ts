@@ -8,7 +8,7 @@ export interface Person {
   id: string,   // My DB reference
   source: string, //Google or ??
   source_id: string, // Google or ?? key
-  customer_since: Date,
+  person_since: Date,
   // Popiulated from Goog
   name: PersonName,
   avatarUrl: string,

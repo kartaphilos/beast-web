@@ -4,7 +4,7 @@ import { Logger }                       from 'angular2-logger/core';
 import { Subscription }                 from 'rxjs/Subscription';
 
 import { Person }                                from './../../../core/models';
-import { GlobalEventsService, GoogleApiService } from './../../../core/services'
+import { GlobalEventsService, GoogleApiService, PersonService } from './../../../core/services'
 
 @Component({
   selector: 'app-person-list',
@@ -29,12 +29,18 @@ export class PersonListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this._logger.debug('Person-list: ngOninit');
     this.getContacts();
   }
 
   getContacts(): void {
     this.googleService.getUsersConnections()
       .then(persons => this.persons = persons);
+  }
+
+  gotoDetail(person: Person): void {
+    this._logger.debug('person_id: ', person.id);
+    this.router.navigate(['/person/detail', person.id]);
   }
 
 /*

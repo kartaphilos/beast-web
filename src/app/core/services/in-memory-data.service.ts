@@ -214,6 +214,6 @@ export class InMemoryDataService implements InMemoryDbService {
       },
     ];
 
-    return { animal, animalconstants, place, placeconstants };
+    return { animal, animalconstants, place, placeconstants, person };
   }
 }

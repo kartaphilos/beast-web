@@ -65,7 +65,7 @@ export class PersonService {
 
   update(): void { }
 
-  create(): void { }
+  create(p: Person): void { }
 
   private handleError(error: any): Promise<any> {
     console.error('An error occurred', error);

@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Logger }       from 'angular2-logger/core';
+import { Observable }       from 'rxjs/Observable';
+import 'rxjs/add/observable/fromPromise';
 
 import { Person }    from './../../core/models'
 import { GlobalEventsService }    from './../../core/services'
@@ -68,28 +70,32 @@ export class GoogleApiService {
   }
 
   // ENDPOINTS
-  getUsersConnections(): Promise<Person[]> {
+  getUsersConnections(): Observable<Person[]> {
     if (this.isUserSignedIn && this.gapiClientInitialised) {
-      return gapi.client.people.people.get({
-        resourceName: 'people/me/connections'
-      })
-        .then( (onFullfilled) => {
-          let persons: Person[] = [];
-          //let i = 0;
-          onFullfilled.result.connections.forEach( (contact) => {
-            //p.push( contact.resourceName, contact.
-            this._logger.debug('id: ', contact.resourceName, ' name: ', contact.names[0].givenName);
-            let p: Person = <Person>{ name: {}, source: 'Google' };
-            p.source_id = contact.resourceName;
-            p.name.given = contact.names[0].givenName;
-            p.name.family = contact.names[0].familyName;
-            p.name.display = contact.names[0].displayName;
-            persons.push(p);
-            //i++
-          });
-          return persons;
+      let contacts$ = Observable.fromPromise(
+        gapi.client.people.people.get({
+          resourceName: 'people/me/connections'
         })
+          .then((onFullfilled: any) => {
+            let persons: Person[] = [];
+            //let i = 0;
+            onFullfilled.result.connections.forEach((contact: any) => {
+              //p.push( contact.resourceName, contact.
+              //this._logger.debug('id: ', contact.resourceName, ' name: ', contact.names[0].givenName);
+              let p: Person = <Person>{ name: {} };
+              p.id = contact.resourceName;
+              p.name.given = contact.names[0].givenName;
+              p.name.family = contact.names[0].familyName;
+              p.name.display = contact.names[0].displayName;
+              persons.push(p);
+              //i++
+            });
+            return persons;
+          })
+      );
+      return contacts$;
     }
+
   }
 
 

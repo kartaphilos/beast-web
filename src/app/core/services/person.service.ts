@@ -39,7 +39,8 @@ export class PersonService {
 
   getPerson(id: string): Observable<Person> {
     let person$ = this.http.get(`${this.personUrl}/${id}`)
-      .map(this.mapPerson.bind(this));
+      .map(this.mapPerson.bind(this))
+      .catch(this.handleError);
     return person$;
 
     // Use mergeMap to combine both calls
@@ -66,7 +67,6 @@ export class PersonService {
       .catch(this.handleError);
   }
 
-
   create(person: Person): Promise<Person> {
     return this.http
       .post(this.personUrl, JSON.stringify(person))
@@ -75,10 +75,9 @@ export class PersonService {
       .catch(this.handleError);
   }
 
-
-  private handleError(error: any): Promise<any> {
+  private handleError(error: any): Observable<any> {
     console.error('An error occurred', error);
-    return Promise.reject(error.message || error);
+    return Observable.throw(error.message || error);
   }
 
 }

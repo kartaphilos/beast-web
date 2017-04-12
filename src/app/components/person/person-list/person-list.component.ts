@@ -13,11 +13,12 @@ import { GlobalEventsService, GoogleApiService, PersonService } from './../../..
 })
 export class PersonListComponent implements OnInit, OnDestroy {
   subscription: Subscription;
-  persons: Person[];  //How to get Google Person model?
+  persons: Person[]; // = <Person[]>[{ name: {}, source: 'google' }];
 
   constructor(
     private eventsService: GlobalEventsService,
     private googleService: GoogleApiService,
+    private personService: PersonService,
     private _logger: Logger,
     private router: Router,
   ) {
@@ -30,12 +31,14 @@ export class PersonListComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this._logger.debug('Person-list: ngOninit');
-    this.getContacts();
+    this.getPersons();
   }
 
-  getContacts(): void {
-    this.googleService.getUsersConnections()
-      .then(persons => this.persons = persons);
+  getPersons(): void {
+    //this.googleService.getUsersConnections()
+    //  .then(persons => this.persons = persons);
+    this.personService.getPersons()
+      .subscribe( p => this.persons = p);
   }
 
   gotoDetail(person: Person): void {

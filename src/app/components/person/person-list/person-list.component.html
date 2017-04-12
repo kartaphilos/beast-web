@@ -1,12 +1,13 @@
 <p>
   person-list works!
 </p>
-
-<md-list dense>
-  <md-list-item *ngFor="let person of persons" [class.selected]="person === selectedPerson" (click)="gotoDetail(person)">
-    <md-icon md-list-avatar>person</md-icon>
-    <h3 md-line> {{person.name.display}} </h3>
-    <p md-line>First Name: {{person.name.given}} Family Name: {{person.name.family}} Goog ID: {{person.source_id}}</p>
-  </md-list-item>
-  <span class="add" (click)="create()"  ><button md-mini-fab><md-icon>add circle</md-icon></button></span>
-</md-list>
+<div *ngIf="persons">
+  <md-list dense>
+    <md-list-item *ngFor="let person of persons" [class.selected]="person === selectedPerson" (click)="gotoDetail(person)">
+      <md-icon md-list-avatar>person</md-icon>
+      <h3 md-line> {{person.name.display}} </h3>
+      <p md-line>First Name: {{person.name.given}} Family Name: {{person.name.family}} Goog ID: {{person.source_id}}</p>
+    </md-list-item>
+    <span class="add" (click)="create()"><button md-mini-fab><md-icon>add circle</md-icon></button></span>
+  </md-list>
+</div>

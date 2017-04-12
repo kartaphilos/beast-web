@@ -3,7 +3,6 @@ import { Headers, Http, Response }	from '@angular/http';
 import { Logger }					from 'angular2-logger/core';
 import { Subscription }   from 'rxjs/Subscription';
 import { Observable }       from 'rxjs/Observable';
-//import 'rxjs/add/operator/toPromise';
 
 import { Person } from './../models';
 import { GlobalEventsService, GoogleApiService } from './../services'
@@ -21,14 +20,12 @@ export class PersonService {
     private http: Http
   ) { }
 
-  getPersons(): Observable<Person[]> {
+  getPersons(): Observable<Person[]> {  // Gets all contacts in two calls to avoid iterating individual goog calls
     let persons$ = Observable.forkJoin([
       this.http.get(this.personUrl).map(this.mapPersons.bind(this)),
       this.googleService.getUsersConnections()
     ])
       .map((data: any[]) => {
-        this._logger.debug('persons: ', data[0]);
-        this._logger.debug('goog contacts: ', data[1]);
         // Combine arrays together by key...
         const combined = data[0].map((p: Person) => {
           return Object.assign({}, p, data[1].filter((g: Person) => g.id === p.id)[0]);
@@ -39,24 +36,6 @@ export class PersonService {
       .catch(this.handleError);
     return persons$;
   }
-
-  /*
-  Two strategies:
-  1) get persons and for each person make goog call for that person -> Slow for lots of app contacts
-  2) get persons and get google contacts list and combine by person id key (source_id).  Could be slow if only a few app contacts
-  Go with #2
-  Compare and array of local persons (from /api/persons) with array of contacts from GoogleApiService
-  Common key is person.source_id == google.resourceName
-  Don't want to make a call to Google for each id.  Make one call and create array of contacts.
-  For each id in local persons => find id in Google array and extract required data
-  this.beastpersons[] = getBeastPersons()
-    .then( (p) => {
-    googleService.getPersonsInGroup().subscribe.map(find id)
-    p = goog mapping
-  })
-}
-*/
-
 
   getPerson(id: string): Observable<Person> {
     let person$ = this.http.get(`${this.personUrl}/${id}`)

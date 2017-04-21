@@ -58,6 +58,7 @@ setNewOrExistingPerson(): void {
 }
 
 getPerson(): void {  //TODO: add error checking to catch for bad id
+  this._logger.debug('Person Detail - getPerson(): ');
   this.route.params
     .switchMap((p: Params) => this.personService.getPerson(p['id']))
     .subscribe(a => {

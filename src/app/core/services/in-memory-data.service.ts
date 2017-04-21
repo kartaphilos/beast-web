@@ -188,27 +188,27 @@ export class InMemoryDataService implements InMemoryDbService {
 
     let person = [
       {
-        "id": "people/c29155056379758039",
+        "id": "c29155056379758039",
         "source": "google",
         "since": "2006-02-18T13:43:09.707Z"
       },
       {
-        "id": "people/c6589266689581110140",
+        "id": "c6589266689581110140",
         "source": "google",
         "since": "2010-05-29T13:43:09.707Z"
       },
       {
-        "id": "people/c7759119069093632844",
+        "id": "c7759119069093632844",
         "source": "google",
         "since": "2009-02-18T13:43:09.707Z"
       },
       {
-        "id": "people/c7791926243301797329",
+        "id": "c7791926243301797329",
         "source": "google",
         "since": "2008-02-18T13:43:09.707Z"
       },
       {
-        "id": "people/c8134290348611851511",
+        "id": "c8134290348611851511",
         "source": "google",
         "since": "2005-02-18T13:43:09.707Z"
       },

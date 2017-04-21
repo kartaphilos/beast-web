@@ -83,7 +83,7 @@ export class GoogleApiService {
               //p.push( contact.resourceName, contact.
               //this._logger.debug('id: ', contact.resourceName, ' name: ', contact.names[0].givenName);
               let p: Person = <Person>{ name: {} };
-              p.id = contact.resourceName;
+              p.id = contact.resourceName.replace('people/',''); //remove 'people/' from goog id
               p.name.given = contact.names[0].givenName;
               p.name.family = contact.names[0].familyName;
               p.name.display = contact.names[0].displayName;
@@ -103,8 +103,29 @@ export class GoogleApiService {
     return;
   }
 
-  getPerson(id: string): Promise<Person> {
-    return;
+  getContact(id: string): Observable<Person> {
+    if (this.isUserSignedIn && this.gapiClientInitialised) {
+      let contact$ = Observable.fromPromise(
+        gapi.client.people.people.get({
+          resourceName: `people/${id}`
+        })
+          .then((response: any) => {
+            let person: Person = <Person>{ name: {} };
+            response.result.connections.forEach((contact: any) => {
+              this._logger.debug('id: ', contact.resourceName, ' name: ', contact.names[0].givenName);
+              person.id = contact.resourceName;
+              person.name.given = contact.names[0].givenName;
+              person.name.family = contact.names[0].familyName;
+              person.name.display = contact.names[0].displayName;
+            },
+              (reason: any) => {
+                console.error('get Contact Error: ' + reason.result.error.message);
+              });
+            return person;
+          })
+      );
+      return contact$;;
+    }
   }
 
   updateSigninStatus(isSignedIn: boolean): void {  // Can't we just make call everytime?
